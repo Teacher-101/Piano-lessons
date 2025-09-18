@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>École de Piano en Ligne</title>
+    <title>École de Piano Virtuose - Plateforme Professionnelle</title>
     <style>
         * {
             margin: 0;
@@ -12,90 +12,94 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
 
         .header {
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
             margin-bottom: 30px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             border: 1px solid rgba(255,255,255,0.3);
         }
 
         .header h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             background: linear-gradient(45deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            font-weight: 800;
         }
 
         .header p {
-            font-size: 1.2em;
+            font-size: 1.3em;
             color: #666;
+            font-weight: 300;
         }
 
         .nav-tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 15px;
         }
 
         .tab-button {
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 15px 25px;
+            padding: 18px 30px;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1em;
-            font-weight: bold;
+            transition: all 0.4s ease;
+            font-size: 1.1em;
+            font-weight: 600;
             backdrop-filter: blur(10px);
+            text-decoration: none;
+            display: inline-block;
         }
 
         .tab-button:hover, .tab-button.active {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
         }
 
         .tab-content {
             display: none;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
             border: 1px solid rgba(255,255,255,0.3);
         }
 
         .tab-content.active {
             display: block;
-            animation: fadeInUp 0.6s ease;
+            animation: fadeInUp 0.8s ease;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -105,25 +109,26 @@
 
         .lesson-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
         }
 
         .lesson-card {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 20px;
+            padding: 30px;
             color: white;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
         .lesson-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
         }
 
         .lesson-card::before {
@@ -133,14 +138,14 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
             transform: rotate(45deg);
             transition: all 0.6s ease;
             opacity: 0;
         }
 
         .lesson-card:hover::before {
-            animation: shimmer 1.5s ease-in-out;
+            animation: shimmer 2s ease-in-out;
         }
 
         @keyframes shimmer {
@@ -150,22 +155,118 @@
         }
 
         .lesson-card h3 {
-            font-size: 1.3em;
-            margin-bottom: 10px;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
-        .lesson-card .duration {
-            background: rgba(255,255,255,0.2);
-            padding: 5px 10px;
-            border-radius: 20px;
+        .lesson-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .lesson-duration {
+            background: rgba(255,255,255,0.25);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .lesson-level {
+            background: rgba(255,255,255,0.15);
+            padding: 5px 12px;
+            border-radius: 15px;
             font-size: 0.8em;
-            display: inline-block;
-            margin-top: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .video-section {
+            margin: 25px 0;
+            background: rgba(0,0,0,0.05);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .video-player {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            background: #000;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            margin: 0 auto;
+        }
+
+        .video-upload {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .upload-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .lesson-content {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            white-space: pre-line;
+            line-height: 1.8;
+        }
+
+        .lesson-objectives {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .lesson-theory {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .lesson-practice {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .lesson-homework {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
         }
 
         .admin-form {
             display: grid;
-            gap: 20px;
+            gap: 25px;
         }
 
         .form-group {
@@ -174,119 +275,138 @@
         }
 
         .form-group label {
-            font-weight: bold;
-            margin-bottom: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: #667eea;
+            font-size: 1.1em;
         }
 
         .form-group input, .form-group textarea, .form-group select {
-            padding: 12px;
+            padding: 15px;
             border: 2px solid #e1e5e9;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1em;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
             outline: none;
             border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
         }
 
         .btn {
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 18px 35px;
             border-radius: 50px;
-            font-size: 1em;
-            font-weight: bold;
+            font-size: 1.1em;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
         }
 
         .piano-keys {
             display: flex;
             justify-content: center;
-            margin: 30px 0;
+            margin: 40px 0;
             background: #222;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 15px;
             overflow-x: auto;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
         .key {
-            width: 40px;
-            height: 200px;
+            width: 50px;
+            height: 240px;
             margin: 0 1px;
             cursor: pointer;
-            border-radius: 0 0 5px 5px;
-            transition: all 0.1s ease;
+            border-radius: 0 0 8px 8px;
+            transition: all 0.15s ease;
             position: relative;
+            user-select: none;
         }
 
         .key.white {
-            background: white;
+            background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
             border: 1px solid #ccc;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
         }
 
         .key.black {
-            background: #222;
-            width: 25px;
-            height: 120px;
-            margin: 0 -12px;
+            background: linear-gradient(to bottom, #333 0%, #111 100%);
+            width: 30px;
+            height: 150px;
+            margin: 0 -15px;
             z-index: 2;
-            border-radius: 0 0 3px 3px;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.5);
         }
 
         .key.active {
-            background: #667eea !important;
-            transform: translateY(2px);
+            background: linear-gradient(45deg, #667eea, #764ba2) !important;
+            transform: translateY(3px);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.6);
         }
 
-        .progress-section {
+        .metronome {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 20px;
             margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
 
-        .progress-bar {
-            background: #e1e5e9;
-            border-radius: 10px;
-            height: 20px;
-            overflow: hidden;
-            margin: 10px 0;
+        .bpm-display {
+            font-size: 4em;
+            font-weight: 900;
+            color: #d35400;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        .progress-fill {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            height: 100%;
-            border-radius: 10px;
-            transition: width 0.6s ease;
-        }
-
-        .student-list {
-            display: grid;
-            gap: 15px;
-        }
-
-        .student-card {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 20px;
-            border-radius: 15px;
+        .bpm-controls {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: transform 0.3s ease;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
         }
 
-        .student-card:hover {
-            transform: translateX(10px);
+        .bpm-btn {
+            background: #d35400;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3);
+        }
+
+        .bpm-btn:hover {
+            background: #e67e22;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(211, 84, 0, 0.4);
         }
 
         .modal {
@@ -297,7 +417,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -309,20 +429,21 @@
 
         .modal-content {
             background: white;
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 900px;
+            width: 95%;
+            max-height: 85vh;
             overflow-y: auto;
             position: relative;
-            animation: modalSlideIn 0.4s ease;
+            animation: modalSlideIn 0.5s ease;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         }
 
         @keyframes modalSlideIn {
             from {
                 opacity: 0;
-                transform: translateY(-50px) scale(0.9);
+                transform: translateY(-60px) scale(0.9);
             }
             to {
                 opacity: 1;
@@ -332,72 +453,66 @@
 
         .close-modal {
             position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2em;
+            top: 20px;
+            right: 25px;
+            font-size: 2.5em;
             cursor: pointer;
             color: #999;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .close-modal:hover {
-            color: #667eea;
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+            transform: rotate(90deg);
         }
 
-        .metronome {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-radius: 15px;
-            margin: 20px 0;
+        .student-list {
+            display: grid;
+            gap: 20px;
         }
 
-        .bpm-display {
-            font-size: 3em;
-            font-weight: bold;
-            color: #d35400;
-            margin: 20px 0;
-        }
-
-        .bpm-controls {
+        .student-card {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 20px;
             display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .bpm-btn {
-            background: #d35400;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.1em;
+            justify-content: space-between;
+            align-items: center;
             transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
-        .bpm-btn:hover {
-            background: #e67e22;
-            transform: scale(1.05);
+        .student-card:hover {
+            transform: translateX(15px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-            
-            .piano-keys {
-                transform: scale(0.8);
-            }
-            
-            .lesson-grid {
-                grid-template-columns: 1fr;
-            }
+        .progress-section {
+            margin: 30px 0;
+        }
+
+        .progress-bar {
+            background: #e1e5e9;
+            border-radius: 15px;
+            height: 25px;
+            overflow: hidden;
+            margin: 15px 0;
+            box-shadow: inset 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .progress-fill {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            height: 100%;
+            border-radius: 15px;
+            transition: width 1s ease;
+            box-shadow: 0 3px 8px rgba(102, 126, 234, 0.3);
         }
 
         .floating-notes {
@@ -412,9 +527,10 @@
 
         .note {
             position: absolute;
-            font-size: 2em;
-            opacity: 0.1;
-            animation: floatNote 15s linear infinite;
+            font-size: 2.5em;
+            opacity: 0.08;
+            animation: floatNote 20s linear infinite;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         @keyframes floatNote {
@@ -423,73 +539,130 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.1;
+                opacity: 0.08;
             }
             90% {
-                opacity: 0.1;
+                opacity: 0.08;
             }
             100% {
                 transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
             }
         }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+
+        .file-label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .piano-keys {
+                transform: scale(0.75);
+            }
+            
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="floating-notes">
-        <div class="note" style="left: 10%; animation-delay: 0s;">♪</div>
-        <div class="note" style="left: 20%; animation-delay: 2s;">♫</div>
-        <div class="note" style="left: 30%; animation-delay: 4s;">♪</div>
-        <div class="note" style="left: 40%; animation-delay: 6s;">♬</div>
-        <div class="note" style="left: 50%; animation-delay: 8s;">♪</div>
-        <div class="note" style="left: 60%; animation-delay: 10s;">♫</div>
-        <div class="note" style="left: 70%; animation-delay: 12s;">♪</div>
-        <div class="note" style="left: 80%; animation-delay: 14s;">♬</div>
-        <div class="note" style="left: 90%; animation-delay: 1s;">♪</div>
+        <div class="note" style="left: 5%; animation-delay: 0s;">🎵</div>
+        <div class="note" style="left: 15%; animation-delay: 3s;">🎶</div>
+        <div class="note" style="left: 25%; animation-delay: 6s;">♪</div>
+        <div class="note" style="left: 35%; animation-delay: 9s;">♫</div>
+        <div class="note" style="left: 45%; animation-delay: 12s;">🎵</div>
+        <div class="note" style="left: 55%; animation-delay: 15s;">♬</div>
+        <div class="note" style="left: 65%; animation-delay: 18s;">🎶</div>
+        <div class="note" style="left: 75%; animation-delay: 2s;">♪</div>
+        <div class="note" style="left: 85%; animation-delay: 5s;">♫</div>
+        <div class="note" style="left: 95%; animation-delay: 8s;">🎵</div>
     </div>
 
     <div class="container">
         <div class="header">
             <h1>🎹 École de Piano Virtuose</h1>
-            <p>Créez et partagez vos cours de piano de manière professionnelle</p>
+            <p>Plateforme professionnelle d'apprentissage du piano avec vidéos démonstratives</p>
         </div>
 
         <div class="nav-tabs">
             <button class="tab-button active" onclick="showTab('accueil')">🏠 Accueil</button>
-            <button class="tab-button" onclick="showTab('cours')">📚 Cours</button>
+            <button class="tab-button" onclick="showTab('cours')">📚 Cours Vidéo</button>
             <button class="tab-button" onclick="showTab('piano')">🎹 Piano Virtuel</button>
-            <button class="tab-button" onclick="showTab('progression')">📈 Progression</button>
+            <button class="tab-button" onclick="showTab('progression')">📈 Élèves</button>
             <button class="tab-button" onclick="showTab('admin')">⚙️ Administration</button>
         </div>
 
         <!-- Accueil -->
         <div class="tab-content active" id="accueil">
-            <h2>Bienvenue dans votre école de piano en ligne</h2>
-            <p>Cette plateforme vous permet de créer, organiser et dispenser vos cours de piano de manière interactive et engageante.</p>
+            <h2>🌟 Bienvenue dans votre école de piano professionnelle</h2>
+            <p style="font-size: 1.2em; margin: 20px 0; color: #666;">Cette plateforme avancée vous permet de créer des cours interactifs avec vidéos démonstratives, gérer vos élèves et offrir une expérience d'apprentissage immersive.</p>
             
             <div class="lesson-grid">
                 <div class="lesson-card" onclick="showTab('cours')">
-                    <h3>📖 Gestion des Cours</h3>
-                    <p>Créez et organisez vos leçons avec du contenu riche et interactif.</p>
-                    <div class="duration">Commencer</div>
+                    <h3>📹 Cours Vidéo Interactifs</h3>
+                    <p>Créez des cours riches avec vidéos démonstratives, exercices structurés et suivi pédagogique.</p>
+                    <div class="lesson-meta">
+                        <div class="lesson-duration">Créer</div>
+                        <div class="lesson-level">Nouveau</div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="showTab('piano')">
-                    <h3>🎹 Piano Interactif</h3>
-                    <p>Un piano virtuel pour les démonstrations et la pratique.</p>
-                    <div class="duration">Jouer</div>
+                <div class="lesson-card" onclick="showTab('piano')" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <h3>🎹 Piano Interactif HD</h3>
+                    <p>Piano virtuel professionnel avec métronome avancé, enregistrement et playback.</p>
+                    <div class="lesson-meta">
+                        <div class="lesson-duration">Jouer</div>
+                        <div class="lesson-level">Pro</div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="showTab('progression')">
-                    <h3>📊 Suivi des Élèves</h3>
-                    <p>Suivez les progrès et gérez vos étudiants efficacement.</p>
-                    <div class="duration">Voir</div>
+                <div class="lesson-card" onclick="showTab('progression')" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                    <h3>📊 Gestion Élèves</h3>
+                    <p>Suivi détaillé des progrès, évaluations personnalisées et communication directe.</p>
+                    <div class="lesson-meta">
+                        <div class="lesson-duration">Gérer</div>
+                        <div class="lesson-level">Avancé</div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Cours -->
         <div class="tab-content" id="cours">
-            <h2>📚 Bibliothèque de Cours</h2>
-            <button class="btn" onclick="openModal('lesson-modal')">➕ Nouveau Cours</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2>📚 Bibliothèque de Cours Vidéo</h2>
+                <button class="btn" onclick="openModal('lesson-modal')">➕ Nouveau Cours</button>
+            </div>
             
             <div class="lesson-grid" id="lessons-container">
                 <!-- Les cours seront ajoutés ici dynamiquement -->
@@ -498,16 +671,18 @@
 
         <!-- Piano Virtuel -->
         <div class="tab-content" id="piano">
-            <h2>🎹 Piano Virtuel</h2>
+            <h2>🎹 Piano Virtuel Professionnel</h2>
             
             <div class="metronome">
-                <h3>🎵 Métronome</h3>
+                <h3>🎵 Métronome Précision</h3>
                 <div class="bpm-display" id="bpm-display">120</div>
                 <div class="bpm-controls">
                     <button class="bpm-btn" onclick="adjustBPM(-10)">-10</button>
+                    <button class="bpm-btn" onclick="adjustBPM(-5)">-5</button>
                     <button class="bpm-btn" onclick="adjustBPM(-1)">-1</button>
                     <button class="bpm-btn" id="metronome-btn" onclick="toggleMetronome()">▶️ Start</button>
                     <button class="bpm-btn" onclick="adjustBPM(1)">+1</button>
+                    <button class="bpm-btn" onclick="adjustBPM(5)">+5</button>
                     <button class="bpm-btn" onclick="adjustBPM(10)">+10</button>
                 </div>
             </div>
@@ -516,17 +691,20 @@
                 <!-- Les touches seront générées par JavaScript -->
             </div>
             
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="btn" onclick="recordMode()">🔴 Mode Enregistrement</button>
+            <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                <button class="btn" onclick="recordMode()">🔴 Enregistrement</button>
                 <button class="btn" onclick="playRecording()">▶️ Rejouer</button>
-                <button class="btn" onclick="clearRecording()">🗑️ Effacer</button>
+                <button class="btn btn-secondary" onclick="clearRecording()">🗑️ Effacer</button>
+                <button class="btn" onclick="downloadRecording()">💾 Télécharger</button>
             </div>
         </div>
 
         <!-- Progression -->
         <div class="tab-content" id="progression">
-            <h2>📈 Suivi de la Progression</h2>
-            <button class="btn" onclick="openModal('student-modal')">➕ Ajouter un Élève</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2>📈 Gestion des Élèves</h2>
+                <button class="btn" onclick="openModal('student-modal')">➕ Nouvel Élève</button>
+            </div>
             
             <div class="student-list" id="students-container">
                 <!-- Les élèves seront ajoutés ici -->
@@ -538,18 +716,26 @@
             <h2>⚙️ Panneau d'Administration</h2>
             <div class="admin-form">
                 <div class="form-group">
-                    <label>Nom de l'école:</label>
+                    <label>🏫 Nom de l'école:</label>
                     <input type="text" id="school-name" placeholder="École de Piano Virtuose">
                 </div>
                 <div class="form-group">
-                    <label>Description:</label>
-                    <textarea id="school-description" rows="3" placeholder="Description de votre école de piano..."></textarea>
+                    <label>📝 Description:</label>
+                    <textarea id="school-description" rows="4" placeholder="Description professionnelle de votre école de piano..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Email de contact:</label>
+                    <label>✉️ Email de contact:</label>
                     <input type="email" id="contact-email" placeholder="contact@ecole-piano.com">
                 </div>
-                <button class="btn" onclick="saveSettings()">💾 Sauvegarder les Paramètres</button>
+                <div class="form-group">
+                    <label>🌐 Site web:</label>
+                    <input type="url" id="website" placeholder="https://www.votre-ecole.com">
+                </div>
+                <div class="form-group">
+                    <label>📱 Téléphone:</label>
+                    <input type="tel" id="phone" placeholder="+33 1 23 45 67 89">
+                </div>
+                <button class="btn" onclick="saveSettings()">💾 Sauvegarder Paramètres</button>
             </div>
         </div>
     </div>
@@ -558,33 +744,52 @@
     <div class="modal" id="lesson-modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('lesson-modal')">&times;</span>
-            <h3>📖 Créer un Nouveau Cours</h3>
+            <h3>📖 Créer un Cours Vidéo Professionnel</h3>
             <div class="admin-form">
                 <div class="form-group">
-                    <label>Titre du cours:</label>
-                    <input type="text" id="lesson-title" placeholder="Ex: Les bases du piano">
+                    <label>🎯 Titre du cours:</label>
+                    <input type="text" id="lesson-title" placeholder="Ex: Maîtriser les gammes majeures">
                 </div>
                 <div class="form-group">
-                    <label>Niveau:</label>
+                    <label>📊 Niveau:</label>
                     <select id="lesson-level">
-                        <option value="debutant">Débutant</option>
-                        <option value="intermediaire">Intermédiaire</option>
-                        <option value="avance">Avancé</option>
+                        <option value="debutant">🟢 Débutant</option>
+                        <option value="intermediaire">🟡 Intermédiaire</option>
+                        <option value="avance">🔴 Avancé</option>
+                        <option value="expert">⚫ Expert</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Durée (minutes):</label>
-                    <input type="number" id="lesson-duration" placeholder="30" min="5" max="180">
+                    <label>⏱️ Durée (minutes):</label>
+                    <input type="number" id="lesson-duration" placeholder="45" min="5" max="180">
                 </div>
                 <div class="form-group">
-                    <label>Description:</label>
-                    <textarea id="lesson-description" rows="4" placeholder="Description détaillée du cours..."></textarea>
+                    <label>📝 Description courte:</label>
+                    <textarea id="lesson-description" rows="3" placeholder="Description attractive du cours pour vos élèves..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Contenu du cours:</label>
-                    <textarea id="lesson-content" rows="8" placeholder="Contenu détaillé de la leçon, exercices, théorie..."></textarea>
+                    <label>🎥 Vidéo démonstrative:</label>
+                    <input type="file" id="lesson-video" class="file-input" accept="video/*" onchange="handleVideoUpload(event)">
+                    <label for="lesson-video" class="file-label">📹 Choisir une vidéo</label>
+                    <div id="video-preview"></div>
                 </div>
-                <button class="btn" onclick="addLesson()">➕ Créer le Cours</button>
+                <div class="form-group">
+                    <label>🎯 Objectifs d'apprentissage:</label>
+                    <textarea id="lesson-objectives" rows="4" placeholder="• Objectif 1&#10;• Objectif 2&#10;• Objectif 3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>📚 Contenu théorique:</label>
+                    <textarea id="lesson-theory" rows="5" placeholder="Expliquez la théorie musicale de cette leçon..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>🎹 Exercices pratiques:</label>
+                    <textarea id="lesson-practice" rows="5" placeholder="Décrivez les exercices pratiques étape par étape..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>🏠 Devoirs à la maison:</label>
+                    <textarea id="lesson-homework" rows="4" placeholder="Travail personnel pour la semaine..."></textarea>
+                </div>
+                <button class="btn" onclick="addLesson()">➕ Créer le Cours Vidéo</button>
             </div>
         </div>
     </div>
@@ -596,28 +801,37 @@
             <h3>👤 Ajouter un Nouvel Élève</h3>
             <div class="admin-form">
                 <div class="form-group">
-                    <label>Nom complet:</label>
+                    <label>👤 Nom complet:</label>
                     <input type="text" id="student-name" placeholder="Ex: Marie Dupont">
                 </div>
                 <div class="form-group">
-                    <label>Âge:</label>
+                    <label>🎂 Âge:</label>
                     <input type="number" id="student-age" placeholder="25" min="3" max="120">
                 </div>
                 <div class="form-group">
-                    <label>Niveau:</label>
+                    <label>📊 Niveau actuel:</label>
                     <select id="student-level">
-                        <option value="debutant">Débutant</option>
-                        <option value="intermediaire">Intermédiaire</option>
-                        <option value="avance">Avancé</option>
+                        <option value="debutant">🟢 Débutant</option>
+                        <option value="intermediaire">🟡 Intermédiaire</option>
+                        <option value="avance">🔴 Avancé</option>
+                        <option value="expert">⚫ Expert</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Email:</label>
+                    <label>✉️ Email:</label>
                     <input type="email" id="student-email" placeholder="marie.dupont@email.com">
                 </div>
                 <div class="form-group">
-                    <label>Objectifs:</label>
-                    <textarea id="student-goals" rows="3" placeholder="Objectifs de l'élève..."></textarea>
+                    <label>📱 Téléphone:</label>
+                    <input type="tel" id="student-phone" placeholder="+33 6 12 34 56 78">
+                </div>
+                <div class="form-group">
+                    <label>🎯 Objectifs personnels:</label>
+                    <textarea id="student-goals" rows="3" placeholder="Objectifs et motivations de l'élève..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>📝 Notes particulières:</label>
+                    <textarea id="student-notes" rows="2" placeholder="Informations importantes, difficultés, préférences..."></textarea>
                 </div>
                 <button class="btn" onclick="addStudent()">➕ Ajouter l'Élève</button>
             </div>
@@ -633,6 +847,7 @@
         let isRecording = false;
         let recording = [];
         let audioContext = null;
+        let videoFiles = {};
 
         // Navigation entre onglets
         function showTab(tabName) {
@@ -650,35 +865,79 @@
         // Gestion des modales
         function openModal(modalId) {
             document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Gestion de l'upload vidéo
+        function handleVideoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const videoURL = URL.createObjectURL(file);
+                const videoPreview = document.getElementById('video-preview');
+                videoPreview.innerHTML = `
+                    <div style="margin-top: 15px;">
+                        <video controls style="width: 100%; max-width: 400px; border-radius: 10px;">
+                            <source src="${videoURL}" type="${file.type}">
+                            Votre navigateur ne supporte pas la lecture vidéo.
+                        </video>
+                        <p style="margin-top: 10px; color: #666; font-size: 0.9em;">
+                            📁 ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)
+                        </p>
+                    </div>
+                `;
+                videoFiles[Date.now()] = { file, url: videoURL };
+            }
         }
 
         // Génération du piano virtuel
         function createPiano() {
             const pianoKeys = document.getElementById('piano-keys');
-            const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+            const notes = [
+                {note: 'C', type: 'white'},
+                {note: 'C#', type: 'black'},
+                {note: 'D', type: 'white'},
+                {note: 'D#', type: 'black'},
+                {note: 'E', type: 'white'},
+                {note: 'F', type: 'white'},
+                {note: 'F#', type: 'black'},
+                {note: 'G', type: 'white'},
+                {note: 'G#', type: 'black'},
+                {note: 'A', type: 'white'},
+                {note: 'A#', type: 'black'},
+                {note: 'B', type: 'white'}
+            ];
             
-            for (let octave = 4; octave <= 6; octave++) {
-                notes.forEach(note => {
+            for (let octave = 3; octave <= 6; octave++) {
+                notes.forEach(noteObj => {
                     const key = document.createElement('div');
-                    key.className = `key ${note.includes('#') ? 'black' : 'white'}`;
-                    key.dataset.note = note + octave;
-                    key.onclick = () => playNote(note + octave, key);
+                    key.className = `key ${noteObj.type}`;
+                    key.dataset.note = noteObj.note + octave;
+                    key.onclick = () => playNote(noteObj.note + octave, key);
+                    
+                    // Ajout du nom de la note sur les touches blanches
+                    if (noteObj.type === 'white') {
+                        key.innerHTML = `<span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 0.8em; color: #666; font-weight: bold;">${noteObj.note}${octave}</span>`;
+                    }
+                    
                     pianoKeys.appendChild(key);
                 });
             }
         }
 
-        // Jouer une note
+        // Jouer une note avec meilleur son
         function playNote(note, keyElement) {
             if (audioContext === null) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
 
             const frequencies = {
+                'C3': 130.81, 'C#3': 138.59, 'D3': 146.83, 'D#3': 155.56, 'E3': 164.81, 'F3': 174.61,
+                'F#3': 185.00, 'G3': 196.00, 'G#3': 207.65, 'A3': 220.00, 'A#3': 233.08, 'B3': 246.94,
                 'C4': 261.63, 'C#4': 277.18, 'D4': 293.66, 'D#4': 311.13, 'E4': 329.63, 'F4': 349.23,
                 'F#4': 369.99, 'G4': 392.00, 'G#4': 415.30, 'A4': 440.00, 'A#4': 466.16, 'B4': 493.88,
                 'C5': 523.25, 'C#5': 554.37, 'D5': 587.33, 'D#5': 622.25, 'E5': 659.25, 'F5': 698.46,
@@ -689,23 +948,31 @@
 
             const frequency = frequencies[note];
             if (frequency) {
-                const oscillator = audioContext.createOscillator();
+                // Son de piano plus réaliste
+                const oscillator1 = audioContext.createOscillator();
+                const oscillator2 = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
                 
-                oscillator.connect(gainNode);
+                oscillator1.connect(gainNode);
+                oscillator2.connect(gainNode);
                 gainNode.connect(audioContext.destination);
                 
-                oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-                oscillator.type = 'sine';
+                oscillator1.frequency.setValueAtTime(frequency, audioContext.currentTime);
+                oscillator2.frequency.setValueAtTime(frequency * 2, audioContext.currentTime);
                 
-                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+                oscillator1.type = 'sine';
+                oscillator2.type = 'triangle';
                 
-                oscillator.start(audioContext.currentTime);
-                oscillator.stop(audioContext.currentTime + 1);
+                gainNode.gain.setValueAtTime(0.4, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.5);
+                
+                oscillator1.start(audioContext.currentTime);
+                oscillator2.start(audioContext.currentTime);
+                oscillator1.stop(audioContext.currentTime + 1.5);
+                oscillator2.stop(audioContext.currentTime + 1.5);
 
                 keyElement.classList.add('active');
-                setTimeout(() => keyElement.classList.remove('active'), 200);
+                setTimeout(() => keyElement.classList.remove('active'), 250);
 
                 if (isRecording) {
                     recording.push({ note, time: Date.now() });
@@ -713,9 +980,9 @@
             }
         }
 
-        // Gestion du métronome
+        // Gestion du métronome améliorée
         function adjustBPM(change) {
-            currentBPM = Math.max(40, Math.min(200, currentBPM + change));
+            currentBPM = Math.max(30, Math.min(200, currentBPM + change));
             document.getElementById('bpm-display').textContent = currentBPM;
             
             if (metronomeInterval) {
@@ -731,14 +998,18 @@
                 clearInterval(metronomeInterval);
                 metronomeInterval = null;
                 btn.textContent = '▶️ Start';
+                btn.style.background = '#d35400';
             } else {
                 startMetronome();
                 btn.textContent = '⏸️ Stop';
+                btn.style.background = '#e74c3c';
             }
         }
 
         function startMetronome() {
             const interval = (60 / currentBPM) * 1000;
+            let beat = 0;
+            
             metronomeInterval = setInterval(() => {
                 if (audioContext) {
                     const oscillator = audioContext.createOscillator();
@@ -747,19 +1018,21 @@
                     oscillator.connect(gainNode);
                     gainNode.connect(audioContext.destination);
                     
-                    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-                    oscillator.type = 'square';
+                    // Premier temps plus fort
+                    oscillator.frequency.setValueAtTime(beat % 4 === 0 ? 1000 : 800, audioContext.currentTime);
+                    oscillator.type = 'sine';
                     
-                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                    gainNode.gain.setValueAtTime(beat % 4 === 0 ? 0.2 : 0.1, audioContext.currentTime);
                     gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
                     
                     oscillator.start(audioContext.currentTime);
                     oscillator.stop(audioContext.currentTime + 0.1);
                 }
+                beat++;
             }, interval);
         }
 
-        // Gestion de l'enregistrement
+        // Gestion de l'enregistrement améliorée
         function recordMode() {
             isRecording = !isRecording;
             const btn = event.target;
@@ -768,14 +1041,19 @@
                 recording = [];
                 btn.textContent = '⏹️ Arrêter';
                 btn.style.background = 'linear-gradient(45deg, #e74c3c, #c0392b)';
+                btn.style.animation = 'pulse 1.5s infinite';
             } else {
-                btn.textContent = '🔴 Mode Enregistrement';
+                btn.textContent = '🔴 Enregistrement';
                 btn.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                btn.style.animation = 'none';
             }
         }
 
         function playRecording() {
-            if (recording.length === 0) return;
+            if (recording.length === 0) {
+                alert('Aucun enregistrement disponible');
+                return;
+            }
             
             const startTime = recording[0].time;
             recording.forEach((entry, index) => {
@@ -785,25 +1063,53 @@
                     if (keyElement) {
                         playNote(entry.note, keyElement);
                     }
-                }, delay / 4); // Accélérer la lecture
+                }, delay / 3); // Lecture légèrement accélérée
             });
         }
 
         function clearRecording() {
-            recording = [];
-            alert('Enregistrement effacé');
+            if (recording.length === 0) {
+                alert('Aucun enregistrement à effacer');
+                return;
+            }
+            
+            if (confirm('Êtes-vous sûr de vouloir effacer cet enregistrement ?')) {
+                recording = [];
+                alert('Enregistrement effacé avec succès');
+            }
         }
 
-        // Gestion des cours
+        function downloadRecording() {
+            if (recording.length === 0) {
+                alert('Aucun enregistrement à télécharger');
+                return;
+            }
+            
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(recording));
+            const downloadAnchorNode = document.createElement('a');
+            downloadAnchorNode.setAttribute("href", dataStr);
+            downloadAnchorNode.setAttribute("download", `enregistrement-piano-${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
+            
+            alert('Enregistrement téléchargé avec succès !');
+        }
+
+        // Gestion des cours avec vidéos
         function addLesson() {
             const title = document.getElementById('lesson-title').value;
             const level = document.getElementById('lesson-level').value;
             const duration = document.getElementById('lesson-duration').value;
             const description = document.getElementById('lesson-description').value;
-            const content = document.getElementById('lesson-content').value;
+            const objectives = document.getElementById('lesson-objectives').value;
+            const theory = document.getElementById('lesson-theory').value;
+            const practice = document.getElementById('lesson-practice').value;
+            const homework = document.getElementById('lesson-homework').value;
+            const videoFile = document.getElementById('lesson-video').files[0];
             
             if (!title || !duration || !description) {
-                alert('Veuillez remplir tous les champs obligatoires');
+                alert('Veuillez remplir au moins le titre, la durée et la description');
                 return;
             }
 
@@ -813,8 +1119,14 @@
                 level,
                 duration: parseInt(duration),
                 description,
-                content,
-                createdAt: new Date().toLocaleDateString('fr-FR')
+                objectives,
+                theory,
+                practice,
+                homework,
+                videoURL: videoFile ? URL.createObjectURL(videoFile) : null,
+                videoName: videoFile ? videoFile.name : null,
+                createdAt: new Date().toLocaleDateString('fr-FR'),
+                completions: Math.floor(Math.random() * 50)
             };
 
             lessons.push(lesson);
@@ -825,9 +1137,14 @@
             document.getElementById('lesson-title').value = '';
             document.getElementById('lesson-duration').value = '';
             document.getElementById('lesson-description').value = '';
-            document.getElementById('lesson-content').value = '';
+            document.getElementById('lesson-objectives').value = '';
+            document.getElementById('lesson-theory').value = '';
+            document.getElementById('lesson-practice').value = '';
+            document.getElementById('lesson-homework').value = '';
+            document.getElementById('lesson-video').value = '';
+            document.getElementById('video-preview').innerHTML = '';
             
-            alert('Cours créé avec succès!');
+            alert('✅ Cours créé avec succès !');
         }
 
         function displayLessons() {
@@ -838,7 +1155,15 @@
                 const levelColors = {
                     'debutant': 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
                     'intermediaire': 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-                    'avance': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)'
+                    'avance': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+                    'expert': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                };
+
+                const levelEmojis = {
+                    'debutant': '🟢',
+                    'intermediaire': '🟡',
+                    'avance': '🔴',
+                    'expert': '⚫'
                 };
 
                 const lessonCard = document.createElement('div');
@@ -849,37 +1174,104 @@
                 lessonCard.innerHTML = `
                     <h3>${lesson.title}</h3>
                     <p>${lesson.description}</p>
-                    <div class="duration">${lesson.duration} min • ${lesson.level}</div>
-                    <small>Créé le ${lesson.createdAt}</small>
+                    ${lesson.videoURL ? '<div style="margin: 15px 0; color: rgba(255,255,255,0.9); font-weight: 600;">🎥 Vidéo incluse</div>' : ''}
+                    <div class="lesson-meta">
+                        <div class="lesson-duration">${lesson.duration} min</div>
+                        <div class="lesson-level">${levelEmojis[lesson.level]} ${lesson.level}</div>
+                    </div>
+                    <small style="opacity: 0.8; display: block; margin-top: 10px;">
+                        📅 ${lesson.createdAt} • 👥 ${lesson.completions} complétions
+                    </small>
                 `;
                 
                 container.appendChild(lessonCard);
             });
 
             if (lessons.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">Aucun cours créé. Cliquez sur "Nouveau Cours" pour commencer.</p>';
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 60px; color: #666; font-style: italic; grid-column: 1/-1;">
+                        <div style="font-size: 4em; margin-bottom: 20px;">📹</div>
+                        <h3>Aucun cours créé</h3>
+                        <p>Cliquez sur "Nouveau Cours" pour créer votre premier cours vidéo</p>
+                    </div>
+                `;
             }
         }
 
         function viewLesson(lesson) {
+            const levelEmojis = {
+                'debutant': '🟢',
+                'intermediaire': '🟡',
+                'avance': '🔴',
+                'expert': '⚫'
+            };
+
             const modal = document.createElement('div');
             modal.className = 'modal active';
             modal.innerHTML = `
                 <div class="modal-content">
                     <span class="close-modal" onclick="this.closest('.modal').remove()">&times;</span>
                     <h2>${lesson.title}</h2>
-                    <div style="margin: 20px 0;">
-                        <span style="background: #667eea; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9em;">
-                            ${lesson.level} • ${lesson.duration} min
+                    <div style="margin: 20px 0; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
+                        <span style="background: #667eea; color: white; padding: 8px 20px; border-radius: 25px; font-size: 0.9em; font-weight: 600;">
+                            ${levelEmojis[lesson.level]} ${lesson.level}
+                        </span>
+                        <span style="background: #e74c3c; color: white; padding: 8px 20px; border-radius: 25px; font-size: 0.9em; font-weight: 600;">
+                            ⏱️ ${lesson.duration} minutes
+                        </span>
+                        <span style="background: #27ae60; color: white; padding: 8px 20px; border-radius: 25px; font-size: 0.9em; font-weight: 600;">
+                            👥 ${lesson.completions} élèves
                         </span>
                     </div>
-                    <h3>Description:</h3>
-                    <p style="margin-bottom: 20px;">${lesson.description}</p>
-                    <h3>Contenu du cours:</h3>
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; white-space: pre-wrap;">${lesson.content}</div>
-                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    
+                    ${lesson.videoURL ? `
+                        <div class="video-section">
+                            <h3>🎥 Vidéo Démonstrative</h3>
+                            <video controls style="width: 100%; max-height: 400px; border-radius: 15px; margin: 15px 0;">
+                                <source src="${lesson.videoURL}" type="video/mp4">
+                                Votre navigateur ne supporte pas la lecture vidéo.
+                            </video>
+                            <p style="color: #666; font-size: 0.9em; text-align: center;">📁 ${lesson.videoName}</p>
+                        </div>
+                    ` : ''}
+                    
+                    <div style="margin: 25px 0;">
+                        <h3>📝 Description</h3>
+                        <p style="background: #f8f9fa; padding: 20px; border-radius: 15px; margin: 15px 0; line-height: 1.6;">${lesson.description}</p>
+                    </div>
+
+                    ${lesson.objectives ? `
+                        <div class="lesson-objectives">
+                            <h3>🎯 Objectifs d'apprentissage</h3>
+                            <div style="white-space: pre-line; margin-top: 15px; line-height: 1.8;">${lesson.objectives}</div>
+                        </div>
+                    ` : ''}
+
+                    ${lesson.theory ? `
+                        <div class="lesson-theory">
+                            <h3>📚 Contenu théorique</h3>
+                            <div style="white-space: pre-line; margin-top: 15px; line-height: 1.8;">${lesson.theory}</div>
+                        </div>
+                    ` : ''}
+
+                    ${lesson.practice ? `
+                        <div class="lesson-practice">
+                            <h3>🎹 Exercices pratiques</h3>
+                            <div style="white-space: pre-line; margin-top: 15px; line-height: 1.8;">${lesson.practice}</div>
+                        </div>
+                    ` : ''}
+
+                    ${lesson.homework ? `
+                        <div class="lesson-homework">
+                            <h3>🏠 Devoirs à la maison</h3>
+                            <div style="white-space: pre-line; margin-top: 15px; line-height: 1.8;">${lesson.homework}</div>
+                        </div>
+                    ` : ''}
+
+                    <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
                         <button class="btn" onclick="editLesson(${lesson.id})">✏️ Modifier</button>
-                        <button class="btn" style="background: linear-gradient(45deg, #e74c3c, #c0392b);" onclick="deleteLesson(${lesson.id})">🗑️ Supprimer</button>
+                        <button class="btn btn-secondary" onclick="deleteLesson(${lesson.id})">🗑️ Supprimer</button>
+                        <button class="btn" onclick="duplicateLesson(${lesson.id})">📋 Dupliquer</button>
                     </div>
                 </div>
             `;
@@ -894,12 +1286,15 @@
             document.getElementById('lesson-level').value = lesson.level;
             document.getElementById('lesson-duration').value = lesson.duration;
             document.getElementById('lesson-description').value = lesson.description;
-            document.getElementById('lesson-content').value = lesson.content;
+            document.getElementById('lesson-objectives').value = lesson.objectives || '';
+            document.getElementById('lesson-theory').value = lesson.theory || '';
+            document.getElementById('lesson-practice').value = lesson.practice || '';
+            document.getElementById('lesson-homework').value = lesson.homework || '';
 
             // Supprimer l'ancien cours
             lessons = lessons.filter(l => l.id !== lessonId);
             
-            // Fermer la modal de visualisation
+            // Fermer les modales
             document.querySelectorAll('.modal').forEach(modal => modal.remove());
             
             // Ouvrir la modal d'édition
@@ -907,24 +1302,44 @@
         }
 
         function deleteLesson(lessonId) {
-            if (confirm('Êtes-vous sûr de vouloir supprimer ce cours?')) {
+            if (confirm('⚠️ Êtes-vous sûr de vouloir supprimer ce cours ?\nCette action est irréversible.')) {
                 lessons = lessons.filter(l => l.id !== lessonId);
                 displayLessons();
                 document.querySelectorAll('.modal').forEach(modal => modal.remove());
-                alert('Cours supprimé avec succès!');
+                alert('✅ Cours supprimé avec succès !');
             }
         }
 
-        // Gestion des étudiants
+        function duplicateLesson(lessonId) {
+            const lesson = lessons.find(l => l.id === lessonId);
+            if (!lesson) return;
+
+            const newLesson = {
+                ...lesson,
+                id: Date.now(),
+                title: lesson.title + ' (Copie)',
+                createdAt: new Date().toLocaleDateString('fr-FR'),
+                completions: 0
+            };
+
+            lessons.push(newLesson);
+            displayLessons();
+            document.querySelectorAll('.modal').forEach(modal => modal.remove());
+            alert('✅ Cours dupliqué avec succès !');
+        }
+
+        // Gestion des étudiants améliorée
         function addStudent() {
             const name = document.getElementById('student-name').value;
             const age = document.getElementById('student-age').value;
             const level = document.getElementById('student-level').value;
             const email = document.getElementById('student-email').value;
+            const phone = document.getElementById('student-phone').value;
             const goals = document.getElementById('student-goals').value;
+            const notes = document.getElementById('student-notes').value;
             
             if (!name || !age || !email) {
-                alert('Veuillez remplir tous les champs obligatoires');
+                alert('Veuillez remplir au moins le nom, l\'âge et l\'email');
                 return;
             }
 
@@ -934,10 +1349,14 @@
                 age: parseInt(age),
                 level,
                 email,
+                phone: phone || 'Non renseigné',
                 goals,
-                progress: Math.floor(Math.random() * 100), // Progression simulée
+                notes,
+                progress: Math.floor(Math.random() * 100),
                 joinDate: new Date().toLocaleDateString('fr-FR'),
-                lessonsCompleted: Math.floor(Math.random() * 20)
+                lessonsCompleted: Math.floor(Math.random() * 25),
+                lastLesson: 'Il y a ' + Math.floor(Math.random() * 7 + 1) + ' jours',
+                nextLesson: new Date(Date.now() + Math.floor(Math.random() * 7 + 1) * 24 * 60 * 60 * 1000).toLocaleDateString('fr-FR')
             };
 
             students.push(student);
@@ -948,9 +1367,11 @@
             document.getElementById('student-name').value = '';
             document.getElementById('student-age').value = '';
             document.getElementById('student-email').value = '';
+            document.getElementById('student-phone').value = '';
             document.getElementById('student-goals').value = '';
+            document.getElementById('student-notes').value = '';
             
-            alert('Élève ajouté avec succès!');
+            alert('✅ Élève ajouté avec succès !');
         }
 
         function displayStudents() {
@@ -958,6 +1379,13 @@
             container.innerHTML = '';
 
             students.forEach(student => {
+                const levelEmojis = {
+                    'debutant': '🟢',
+                    'intermediaire': '🟡',
+                    'avance': '🔴',
+                    'expert': '⚫'
+                };
+
                 const studentCard = document.createElement('div');
                 studentCard.className = 'student-card';
                 studentCard.onclick = () => viewStudent(student);
@@ -965,15 +1393,19 @@
                 studentCard.innerHTML = `
                     <div>
                         <h3>${student.name}</h3>
-                        <p>${student.age} ans • ${student.level}</p>
-                        <small>${student.lessonsCompleted} cours terminés</small>
+                        <p>${student.age} ans • ${levelEmojis[student.level]} ${student.level}</p>
+                        <small style="color: #666;">
+                            📧 ${student.email} • 📱 ${student.phone}<br>
+                            📚 ${student.lessonsCompleted} cours • Dernière leçon: ${student.lastLesson}
+                        </small>
                     </div>
                     <div style="text-align: right;">
                         <div class="progress-section">
-                            <div class="progress-bar" style="width: 120px;">
+                            <strong style="color: #667eea;">${student.progress}%</strong>
+                            <div class="progress-bar" style="width: 150px;">
                                 <div class="progress-fill" style="width: ${student.progress}%"></div>
                             </div>
-                            <small>${student.progress}% complété</small>
+                            <small>Progression globale</small>
                         </div>
                     </div>
                 `;
@@ -982,276 +1414,15 @@
             });
 
             if (students.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #666; font-style: italic;">Aucun élève enregistré. Cliquez sur "Ajouter un Élève" pour commencer.</p>';
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 60px; color: #666; font-style: italic;">
+                        <div style="font-size: 4em; margin-bottom: 20px;">👥</div>
+                        <h3>Aucun élève enregistré</h3>
+                        <p>Cliquez sur "Nouvel Élève" pour ajouter votre premier étudiant</p>
+                    </div>
+                `;
             }
         }
 
         function viewStudent(student) {
-            const modal = document.createElement('div');
-            modal.className = 'modal active';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-modal" onclick="this.closest('.modal').remove()">&times;</span>
-                    <h2>👤 ${student.name}</h2>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
-                        <div>
-                            <strong>Âge:</strong> ${student.age} ans<br>
-                            <strong>Niveau:</strong> ${student.level}<br>
-                            <strong>Email:</strong> ${student.email}<br>
-                            <strong>Inscription:</strong> ${student.joinDate}
-                        </div>
-                        <div>
-                            <strong>Progression globale:</strong>
-                            <div class="progress-bar" style="margin: 10px 0;">
-                                <div class="progress-fill" style="width: ${student.progress}%"></div>
-                            </div>
-                            ${student.progress}%<br>
-                            <strong>Cours terminés:</strong> ${student.lessonsCompleted}
-                        </div>
-                    </div>
-                    <h3>Objectifs:</h3>
-                    <p style="background: #f8f9fa; padding: 15px; border-radius: 10px;">${student.goals || 'Aucun objectif spécifié'}</p>
-                    <div style="margin-top: 20px; display: flex; gap: 10px;">
-                        <button class="btn" onclick="editStudent(${student.id})">✏️ Modifier</button>
-                        <button class="btn" style="background: linear-gradient(45deg, #e74c3c, #c0392b);" onclick="deleteStudent(${student.id})">🗑️ Supprimer</button>
-                        <button class="btn" onclick="updateProgress(${student.id})">📈 Mettre à jour progression</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        function editStudent(studentId) {
-            const student = students.find(s => s.id === studentId);
-            if (!student) return;
-
-            document.getElementById('student-name').value = student.name;
-            document.getElementById('student-age').value = student.age;
-            document.getElementById('student-level').value = student.level;
-            document.getElementById('student-email').value = student.email;
-            document.getElementById('student-goals').value = student.goals;
-
-            // Supprimer l'ancien étudiant
-            students = students.filter(s => s.id !== studentId);
-            
-            // Fermer la modal de visualisation
-            document.querySelectorAll('.modal').forEach(modal => modal.remove());
-            
-            // Ouvrir la modal d'édition
-            openModal('student-modal');
-        }
-
-        function deleteStudent(studentId) {
-            if (confirm('Êtes-vous sûr de vouloir supprimer cet élève?')) {
-                students = students.filter(s => s.id !== studentId);
-                displayStudents();
-                document.querySelectorAll('.modal').forEach(modal => modal.remove());
-                alert('Élève supprimé avec succès!');
-            }
-        }
-
-        function updateProgress(studentId) {
-            const newProgress = prompt('Nouvelle progression (0-100):');
-            if (newProgress !== null && !isNaN(newProgress)) {
-                const student = students.find(s => s.id === studentId);
-                if (student) {
-                    student.progress = Math.max(0, Math.min(100, parseInt(newProgress)));
-                    displayStudents();
-                    document.querySelectorAll('.modal').forEach(modal => modal.remove());
-                    alert('Progression mise à jour!');
-                }
-            }
-        }
-
-        // Paramètres de l'école
-        function saveSettings() {
-            const schoolName = document.getElementById('school-name').value;
-            const schoolDescription = document.getElementById('school-description').value;
-            const contactEmail = document.getElementById('contact-email').value;
-
-            if (schoolName) {
-                document.querySelector('.header h1').innerHTML = `🎹 ${schoolName}`;
-            }
-            if (schoolDescription) {
-                document.querySelector('.header p').textContent = schoolDescription;
-            }
-
-            alert('Paramètres sauvegardés avec succès!');
-        }
-
-        // Initialisation
-        function init() {
-            createPiano();
-            
-            // Données d'exemple
-            lessons.push({
-                id: 1,
-                title: "Introduction au Piano",
-                level: "debutant",
-                duration: 45,
-                description: "Découvrez les bases du piano : posture, position des mains, et premières notes.",
-                content: "1. Posture correcte au piano\n2. Position des mains et des doigts\n3. Les touches blanches et noires\n4. Exercice : jouer Do-Ré-Mi\n5. Première mélodie simple",
-                createdAt: new Date().toLocaleDateString('fr-FR')
-            });
-            lessons.push({
-    id: 2,
-    title: "🎹 Les gammes majeures",
-    level: "debutant",
-    duration: 40,
-    description: "Maîtrisez les gammes de Do, Sol et Fa majeur avec les bons doigtés.",
-    content: `
-🎯 OBJECTIFS DE LA LEÇON :
-- Comprendre la construction des gammes majeures
-- Maîtriser les doigtés corrects
-- Jouer 3 gammes de base avec fluidité
-
-📚 THÉORIE (10 minutes) :
-- Qu'est-ce qu'une gamme majeure ?
-- Structure : Ton-Ton-Demi-ton-Ton-Ton-Ton-Demi-ton
-- Les altérations (dièses et bémols)
-
-🎹 PRATIQUE (25 minutes) :
-1️⃣ GAMME DE DO MAJEUR
-   → Main droite : 1-2-3-1-2-3-4-5
-   → Main gauche : 5-4-3-2-1-3-2-1
-   → Tempo lent puis progressif
-
-2️⃣ GAMME DE SOL MAJEUR (1 dièse : Fa#)
-   → Même doigtés que Do majeur
-   → Attention au Fa dièse !
-
-3️⃣ GAMME DE FA MAJEUR (1 bémol : Sib)
-   → Main droite : 1-2-3-4-1-2-3-4
-   → Attention au pouce sur le Sib
-
-🎵 EXERCICES :
-- Chaque gamme 5 fois mains séparées
-- 3 fois mains ensemble (tempo lent)
-- Avec métronome : 60 BPM puis 80 BPM
-
-✅ DEVOIRS POUR LA SEMAINE :
-- Gammes quotidiennes (10 minutes/jour)
-- Mémoriser les altérations
-- Enregistrer sa progression`,
-    createdAt: new Date().toLocaleDateString('fr-FR')
-});
-
-lessons.push({
-    id: 3,
-    title: "🎵 Premiers accords",
-    level: "debutant", 
-    duration: 35,
-    description: "Découvrez les accords de base et créez vos premiers accompagnements.",
-    content: `
-🎯 OBJECTIFS DE LA LEÇON :
-- Comprendre la construction des accords majeurs
-- Jouer 3 accords fondamentaux
-- Créer un premier accompagnement simple
-
-📚 THÉORIE (8 minutes) :
-- Qu'est-ce qu'un accord ?
-- Construction : Fondamentale + Tierce + Quinte
-- Accords majeurs vs accords mineurs
-
-🎹 ACCORDS À APPRENDRE :
-
-1️⃣ ACCORD DE DO MAJEUR
-   💡 Notes : Do - Mi - Sol
-   ✋ Doigtés : Pouce (1) - Majeur (3) - Petit doigt (5)
-   
-2️⃣ ACCORD DE FA MAJEUR  
-   💡 Notes : Fa - La - Do
-   ✋ Doigtés : 1 - 3 - 5
-   
-3️⃣ ACCORD DE SOL MAJEUR
-   💡 Notes : Sol - Si - Ré  
-   ✋ Doigtés : 1 - 3 - 5
-
-🎵 PROGRESSION MAGIQUE :
-Do → Fa → Sol → Do (I-IV-V-I)
-
-🎼 MORCEAU D'APPLICATION :
-"Frère Jacques" avec accompagnement d'accords
-- Couplet 1 : Do majeur
-- Couplet 2 : Progression Do-Fa-Sol-Do
-
-✅ EXERCICES :
-- Chaque accord 10 fois lentement
-- Progression Do-Fa-Sol-Do x 5
-- Accompagnement de "Frère Jacques"
-
-🏠 DEVOIRS :
-- Mémoriser les 3 accords
-- Fluidité dans les transitions
-- Chanter + jouer l'accompagnement`,
-    createdAt: new Date().toLocaleDateString('fr-FR')
-});
-            
-            lessons.push({
-    id: 2,
-    title: "Les gammes majeures",
-    level: "debutant",
-    duration: 40,
-    description: "Maîtrisez les gammes de Do, Sol et Fa majeur avec les bons doigtés.",
-    content: "1. Théorie des gammes majeures\n2. Gamme de Do majeur (mains séparées puis ensemble)\n3. Gamme de Sol majeur (1 dièse)\n4. Gamme de Fa majeur (1 bémol)\n5. Exercices de doigtés\n6. Tempo progressif avec métronome",
-    createdAt: new Date().toLocaleDateString('fr-FR')
-});
-
-lessons.push({
-    id: 3,
-    title: "Premiers accords",
-    level: "debutant",
-    duration: 35,
-    description: "Découvrez les accords de base : Do majeur, Fa majeur et Sol majeur.",
-    content: "1. Qu'est-ce qu'un accord ?\n2. Construction d'un accord majeur\n3. Accord de Do majeur (Do-Mi-Sol)\n4. Accord de Fa majeur (Fa-La-Do)\n5. Accord de Sol majeur (Sol-Si-Ré)\n6. Progression simple : Do-Fa-Sol-Do\n7. Exercice : accompagnement de 'Frère Jacques'",
-    createdAt: new Date().toLocaleDateString('fr-FR')
-});
-
-lessons.push({
-    id: 4,
-    title: "Rythme et mesure",
-    level: "intermediaire",
-    duration: 45,
-    description: "Comprendre les bases du rythme, les temps et les mesures.",
-    content: "1. La mesure 4/4\n2. Les valeurs de notes (noire, blanche, ronde)\n3. Compter les temps\n4. Exercices de rythme avec battement\n5. Utilisation du métronome\n6. Morceau simple en rythme : 'Mary Had a Little Lamb'\n7. Introduction aux silences",
-    createdAt: new Date().toLocaleDateString('fr-FR')
-});
-
-lessons.push({
-    id: 5,
-    title: "Lecture de partitions",
-    level: "intermediaire",
-    duration: 50,
-    description: "Apprendre à lire les notes sur la portée et jouer ses premières partitions.",
-    content: "1. La portée et les clés\n2. Position des notes sur les lignes et interlignes\n3. Clé de Sol : notes de la main droite\n4. Clé de Fa : notes de la main gauche\n5. Exercices de lecture de notes\n6. Première partition simple : 'Ode to Joy' (Beethoven)\n7. Conseils pour mémoriser les notes",
-    createdAt: new Date().toLocaleDateString('fr-FR')
-});
-
-            students.push({
-                id: 1,
-                name: "Sophie Martin",
-                age: 28,
-                level: "debutant",
-                email: "sophie.martin@email.com",
-                goals: "Apprendre à jouer mes chansons préférées",
-                progress: 35,
-                joinDate: new Date().toLocaleDateString('fr-FR'),
-                lessonsCompleted: 8
-            });
-
-            displayLessons();
-            displayStudents();
-        }
-
-        // Gestion des clics en dehors des modales
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.classList.remove('active');
-            }
-        }
-
-        // Initialiser l'application
-        document.addEventListener('DOMContentLoaded', init);
-    </script>
-</body>
-</html>
+            const levelEmojis = {
