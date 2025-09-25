@@ -57,7 +57,6 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
         .module:hover {
@@ -128,6 +127,11 @@
             position: relative;
         }
         
+        .key.pressed {
+            transform: translateY(3px);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
         .progression {
             background: rgba(255,215,0,0.1);
             border-left: 4px solid #FFD700;
@@ -172,8 +176,13 @@
             font-size: 16px;
         }
         
-        .tab:hover, .tab.active {
+        .tab:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .tab.active {
             background: rgba(255,255,255,0.2);
+            color: #FFD700;
         }
         
         .tab-content {
@@ -228,6 +237,7 @@
             background: rgba(0,0,0,0.7);
             border-radius: 10px;
             padding: 15px;
+            z-index: 1000;
         }
         
         .nav-item {
@@ -237,6 +247,7 @@
             padding: 8px 0;
             opacity: 0.8;
             transition: opacity 0.3s;
+            cursor: pointer;
         }
         
         .nav-item:hover {
@@ -247,12 +258,12 @@
 </head>
 <body>
     <div class="navigation">
-        <a href="#module1" class="nav-item">Module 1</a>
-        <a href="#module2" class="nav-item">Module 2</a>
-        <a href="#module3" class="nav-item">Module 3</a>
-        <a href="#module4" class="nav-item">Module 4</a>
-        <a href="#module5" class="nav-item">Module 5</a>
-        <a href="#module6" class="nav-item">Module 6</a>
+        <div class="nav-item" onclick="scrollToModule('module1')">Module 1</div>
+        <div class="nav-item" onclick="scrollToModule('module2')">Module 2</div>
+        <div class="nav-item" onclick="scrollToModule('module3')">Module 3</div>
+        <div class="nav-item" onclick="scrollToModule('module4')">Module 4</div>
+        <div class="nav-item" onclick="scrollToModule('module5')">Module 5</div>
+        <div class="nav-item" onclick="scrollToModule('module6')">Module 6</div>
     </div>
 
     <div class="container">
@@ -304,14 +315,14 @@ vii  - B ø7    : B - D - F - A
                         <p>Main gauche: Accords en position fermée</p>
                         
                         <div class="keyboard">
-                            <div class="key" onclick="playNote('C')">C</div>
-                            <div class="key black" onclick="playNote('Db')">C#</div>
-                            <div class="key" onclick="playNote('D')">D</div>
-                            <div class="key black" onclick="playNote('Eb')">D#</div>
-                            <div class="key" onclick="playNote('E')">E</div>
-                            <div class="key" onclick="playNote('F')">F</div>
-                            <div class="key black" onclick="playNote('Gb')">F#</div>
-                            <div class="key" onclick="playNote('G')">G</div>
+                            <div class="key" onclick="playNote(this, 'C')">C</div>
+                            <div class="key black" onclick="playNote(this, 'C#')">C#</div>
+                            <div class="key" onclick="playNote(this, 'D')">D</div>
+                            <div class="key black" onclick="playNote(this, 'D#')">D#</div>
+                            <div class="key" onclick="playNote(this, 'E')">E</div>
+                            <div class="key" onclick="playNote(this, 'F')">F</div>
+                            <div class="key black" onclick="playNote(this, 'F#')">F#</div>
+                            <div class="key" onclick="playNote(this, 'G')">G</div>
                         </div>
                     </div>
                 </div>
@@ -434,26 +445,26 @@ MD: C + G + D (add9)
                         
                         <h4>Pattern 1 - Traditional Gospel</h4>
                         <div class="rhythm-pattern">
-                            <div class="beat active">1</div>
-                            <div class="beat">e</div>
-                            <div class="beat active">+</div>
-                            <div class="beat">a</div>
-                            <div class="beat">2</div>
-                            <div class="beat">e</div>
-                            <div class="beat active">+</div>
-                            <div class="beat active">a</div>
+                            <div class="beat active" onclick="toggleBeat(this)">1</div>
+                            <div class="beat" onclick="toggleBeat(this)">e</div>
+                            <div class="beat active" onclick="toggleBeat(this)">+</div>
+                            <div class="beat" onclick="toggleBeat(this)">a</div>
+                            <div class="beat" onclick="toggleBeat(this)">2</div>
+                            <div class="beat" onclick="toggleBeat(this)">e</div>
+                            <div class="beat active" onclick="toggleBeat(this)">+</div>
+                            <div class="beat active" onclick="toggleBeat(this)">a</div>
                         </div>
                         
                         <h4>Pattern 2 - Contemporary Gospel</h4>
                         <div class="rhythm-pattern">
-                            <div class="beat active">1</div>
-                            <div class="beat active">e</div>
-                            <div class="beat">+</div>
-                            <div class="beat active">a</div>
-                            <div class="beat active">2</div>
-                            <div class="beat">e</div>
-                            <div class="beat active">+</div>
-                            <div class="beat">a</div>
+                            <div class="beat active" onclick="toggleBeat(this)">1</div>
+                            <div class="beat active" onclick="toggleBeat(this)">e</div>
+                            <div class="beat" onclick="toggleBeat(this)">+</div>
+                            <div class="beat active" onclick="toggleBeat(this)">a</div>
+                            <div class="beat active" onclick="toggleBeat(this)">2</div>
+                            <div class="beat" onclick="toggleBeat(this)">e</div>
+                            <div class="beat active" onclick="toggleBeat(this)">+</div>
+                            <div class="beat" onclick="toggleBeat(this)">a</div>
                         </div>
                     </div>
                 </div>
@@ -606,14 +617,14 @@ Avancé  : C maj9 - Am11 - F maj7#11 - G13sus4-G13
                         
                         <div class="rhythm-pattern">
                             <h4>Pattern Urban Gospel</h4>
-                            <div class="beat active">1</div>
-                            <div class="beat">e</div>
-                            <div class="beat">+</div>
-                            <div class="beat active">a</div>
-                            <div class="beat">2</div>
-                            <div class="beat active">e</div>
-                            <div class="beat">+</div>
-                            <div class="beat">a</div>
+                            <div class="beat active" onclick="toggleBeat(this)">1</div>
+                            <div class="beat" onclick="toggleBeat(this)">e</div>
+                            <div class="beat" onclick="toggleBeat(this)">+</div>
+                            <div class="beat active" onclick="toggleBeat(this)">a</div>
+                            <div class="beat" onclick="toggleBeat(this)">2</div>
+                            <div class="beat active" onclick="toggleBeat(this)">e</div>
+                            <div class="beat" onclick="toggleBeat(this)">+</div>
+                            <div class="beat" onclick="toggleBeat(this)">a</div>
                         </div>
                     </div>
                 </div>
@@ -680,30 +691,4 @@ Dorien              : C - D - Eb - F - G - A - Bb
                         <h5>Technique :</h5>
                         <ul>
                             <li>Travaillez vos gammes quotidiennement</li>
-                            <li>Développez l'indépendance des mains</li>
-                            <li>Maîtrisez le toucher et l'articulation</li>
-                        </ul>
-                        
-                        <h5>Musical :</h5>
-                        <ul>
-                            <li>Écoutez les grands maîtres (Thomas Dorsey, James Cleveland)</li>
-                            <li>Transcrivez vos passages favoris</li>
-                            <li>Jouez avec d'autres musiciens</li>
-                        </ul>
-                        
-                        <h5>Spirituel :</h5>
-                        <ul>
-                            <li>Comprenez le message des textes</li>
-                            <li>Laissez la spiritualité guider votre jeu</li>
-                            <li>Servez la musique, ne vous servez pas d'elle</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showTab(moduleId, tabName) {
-            // Masquer tous les contenus des onglets du module
-            const contents = document.querySelectorAll(`#tab-${moduleId}-theory, #tab-${moduleId}-practical, #
+                            <li>Développez l'indépen
