@@ -3,1426 +3,707 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>École de Piano Virtuose - Plateforme Professionnelle</title>
+    <title>Cours de Piano Gospel Interactif</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
+            color: white;
             line-height: 1.6;
         }
-
+        
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 40px;
-            margin-bottom: 30px;
+        
+        header {
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
+            padding: 40px 0;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            margin-bottom: 30px;
         }
-
-        .header h1 {
-            font-size: 3.5em;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            font-weight: 800;
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-
-        .header p {
-            font-size: 1.3em;
-            color: #666;
-            font-weight: 300;
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
         }
-
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .tab-button {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 18px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            font-size: 1.1em;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .tab-button:hover, .tab-button.active {
-            background: rgba(255, 255, 255, 0.95);
-            color: #667eea;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-        }
-
-        .tab-content {
-            display: none;
-            background: rgba(255, 255, 255, 0.97);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeInUp 0.8s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .lesson-grid {
+        
+        .modules-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-
-        .lesson-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 20px;
+        
+        .module {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
             padding: 30px;
-            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
             cursor: pointer;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
-
-        .lesson-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-        }
-
-        .lesson-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.15), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s ease;
-            opacity: 0;
-        }
-
-        .lesson-card:hover::before {
-            animation: shimmer 2s ease-in-out;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
-        }
-
-        .lesson-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .lesson-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .lesson-duration {
-            background: rgba(255,255,255,0.25);
-            padding: 8px 15px;
-            border-radius: 25px;
-            font-size: 0.9em;
-            font-weight: 600;
-        }
-
-        .lesson-level {
+        
+        .module:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             background: rgba(255,255,255,0.15);
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8em;
-            text-transform: uppercase;
-            font-weight: 600;
         }
-
-        .video-section {
-            margin: 25px 0;
-            background: rgba(0,0,0,0.05);
-            border-radius: 15px;
-            padding: 20px;
-        }
-
-        .video-player {
-            width: 100%;
-            max-width: 800px;
-            height: 450px;
-            background: #000;
-            border-radius: 15px;
+        
+        .module h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #FFD700;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
+            gap: 10px;
+        }
+        
+        .module-icon {
             font-size: 1.2em;
-            margin: 0 auto;
         }
-
-        .video-upload {
+        
+        .module p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .chord-diagram {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            padding: 20px;
             margin: 15px 0;
-            text-align: center;
+            font-family: monospace;
         }
-
-        .upload-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 5px;
-        }
-
-        .upload-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .lesson-content {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 25px 0;
-            white-space: pre-line;
-            line-height: 1.8;
-        }
-
-        .lesson-objectives {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .lesson-theory {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .lesson-practice {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .lesson-homework {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .admin-form {
-            display: grid;
-            gap: 25px;
-        }
-
-        .form-group {
+        
+        .keyboard {
             display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #667eea;
-            font-size: 1.1em;
-        }
-
-        .form-group input, .form-group textarea, .form-group select {
-            padding: 15px;
-            border: 2px solid #e1e5e9;
-            border-radius: 12px;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 18px 35px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(45deg, #e74c3c, #c0392b);
-        }
-
-        .piano-keys {
-            display: flex;
+            margin: 20px 0;
             justify-content: center;
-            margin: 40px 0;
-            background: #222;
-            padding: 30px;
-            border-radius: 15px;
-            overflow-x: auto;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
-
+        
         .key {
-            width: 50px;
-            height: 240px;
-            margin: 0 1px;
-            cursor: pointer;
-            border-radius: 0 0 8px 8px;
-            transition: all 0.15s ease;
-            position: relative;
-            user-select: none;
-        }
-
-        .key.white {
-            background: linear-gradient(to bottom, #ffffff 0%, #f0f0f0 100%);
-            border: 1px solid #ccc;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-        }
-
-        .key.black {
-            background: linear-gradient(to bottom, #333 0%, #111 100%);
-            width: 30px;
-            height: 150px;
-            margin: 0 -15px;
-            z-index: 2;
-            border-radius: 0 0 5px 5px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.5);
-        }
-
-        .key.active {
-            background: linear-gradient(45deg, #667eea, #764ba2) !important;
-            transform: translateY(3px);
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.6);
-        }
-
-        .metronome {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-radius: 20px;
-            margin: 30px 0;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .bpm-display {
-            font-size: 4em;
-            font-weight: 900;
-            color: #d35400;
-            margin: 30px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .bpm-controls {
+            width: 40px;
+            height: 120px;
+            border: 2px solid #333;
+            background: white;
+            color: black;
             display: flex;
+            align-items: flex-end;
             justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
+            padding: 10px 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .key:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .key.black {
+            width: 25px;
+            height: 80px;
+            background: #333;
+            color: white;
+            margin: 0 -12px;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .progression {
+            background: rgba(255,215,0,0.1);
+            border-left: 4px solid #FFD700;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .theory-box {
+            background: rgba(0,150,255,0.1);
+            border: 1px solid rgba(0,150,255,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .practical-exercise {
+            background: rgba(255,100,100,0.1);
+            border: 1px solid rgba(255,100,100,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        
+        .tabs {
+            display: flex;
+            margin: 20px 0;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+        }
+        
+        .tab:hover, .tab.active {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .rhythm-pattern {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 15px 0;
             flex-wrap: wrap;
         }
-
-        .bpm-btn {
-            background: #d35400;
-            color: white;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 1.2em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(211, 84, 0, 0.3);
-        }
-
-        .bpm-btn:hover {
-            background: #e67e22;
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(211, 84, 0, 0.4);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 25px;
-            max-width: 900px;
-            width: 95%;
-            max-height: 85vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.5s ease;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-60px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 2.5em;
-            cursor: pointer;
-            color: #999;
-            transition: all 0.3s ease;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        
+        .beat {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #FFD700;
             border-radius: 50%;
-        }
-
-        .close-modal:hover {
-            color: #e74c3c;
-            background: rgba(231, 76, 60, 0.1);
-            transform: rotate(90deg);
-        }
-
-        .student-list {
-            display: grid;
-            gap: 20px;
-        }
-
-        .student-card {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 25px;
-            border-radius: 20px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .student-card:hover {
-            transform: translateX(15px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-
-        .progress-section {
-            margin: 30px 0;
-        }
-
-        .progress-bar {
-            background: #e1e5e9;
-            border-radius: 15px;
-            height: 25px;
-            overflow: hidden;
-            margin: 15px 0;
-            box-shadow: inset 0 3px 8px rgba(0,0,0,0.1);
-        }
-
-        .progress-fill {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            height: 100%;
-            border-radius: 15px;
-            transition: width 1s ease;
-            box-shadow: 0 3px 8px rgba(102, 126, 234, 0.3);
-        }
-
-        .floating-notes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .note {
-            position: absolute;
-            font-size: 2.5em;
-            opacity: 0.08;
-            animation: floatNote 20s linear infinite;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        @keyframes floatNote {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.08;
-            }
-            90% {
-                opacity: 0.08;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .file-label {
-            display: inline-block;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 25px;
+            justify-content: center;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 1em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            margin: 10px 5px;
+            transition: all 0.3s;
         }
-
-        .file-label:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        
+        .beat:hover {
+            background: rgba(255,215,0,0.3);
+            transform: scale(1.1);
         }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-            
-            .header h1 {
-                font-size: 2.5em;
-            }
-            
-            .piano-keys {
-                transform: scale(0.75);
-            }
-            
-            .lesson-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-content {
-                padding: 20px;
-                margin: 20px;
-            }
+        
+        .beat.active {
+            background: #FFD700;
+            color: black;
+        }
+        
+        .navigation {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .nav-item {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 8px 0;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-item:hover {
+            opacity: 1;
+            color: #FFD700;
         }
     </style>
 </head>
 <body>
-    <div class="floating-notes">
-        <div class="note" style="left: 5%; animation-delay: 0s;">🎵</div>
-        <div class="note" style="left: 15%; animation-delay: 3s;">🎶</div>
-        <div class="note" style="left: 25%; animation-delay: 6s;">♪</div>
-        <div class="note" style="left: 35%; animation-delay: 9s;">♫</div>
-        <div class="note" style="left: 45%; animation-delay: 12s;">🎵</div>
-        <div class="note" style="left: 55%; animation-delay: 15s;">♬</div>
-        <div class="note" style="left: 65%; animation-delay: 18s;">🎶</div>
-        <div class="note" style="left: 75%; animation-delay: 2s;">♪</div>
-        <div class="note" style="left: 85%; animation-delay: 5s;">♫</div>
-        <div class="note" style="left: 95%; animation-delay: 8s;">🎵</div>
+    <div class="navigation">
+        <a href="#module1" class="nav-item">Module 1</a>
+        <a href="#module2" class="nav-item">Module 2</a>
+        <a href="#module3" class="nav-item">Module 3</a>
+        <a href="#module4" class="nav-item">Module 4</a>
+        <a href="#module5" class="nav-item">Module 5</a>
+        <a href="#module6" class="nav-item">Module 6</a>
     </div>
 
     <div class="container">
-        <div class="header">
-            <h1>🎹 École de Piano Virtuose</h1>
-            <p>Plateforme professionnelle d'apprentissage du piano avec vidéos démonstratives</p>
-        </div>
+        <header>
+            <h1>🎹 Cours de Piano Gospel</h1>
+            <p class="subtitle">Maîtrisez l'art du piano gospel avec style et spiritualité</p>
+        </header>
 
-        <div class="nav-tabs">
-            <button class="tab-button active" onclick="showTab('accueil')">🏠 Accueil</button>
-            <button class="tab-button" onclick="showTab('cours')">📚 Cours Vidéo</button>
-            <button class="tab-button" onclick="showTab('piano')">🎹 Piano Virtuel</button>
-            <button class="tab-button" onclick="showTab('progression')">📈 Élèves</button>
-            <button class="tab-button" onclick="showTab('admin')">⚙️ Administration</button>
-        </div>
+        <div class="modules-grid">
+            <div class="module" id="module1">
+                <h2><span class="module-icon">🎵</span>Module 1: Fondamentaux du Gospel</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab(1, 'theory')">Théorie</button>
+                    <button class="tab" onclick="showTab(1, 'practical')">Pratique</button>
+                    <button class="tab" onclick="showTab(1, 'examples')">Exemples</button>
+                </div>
 
-        <!-- Accueil -->
-        <div class="tab-content active" id="accueil">
-            <h2>🌟 Bienvenue dans votre école de piano professionnelle</h2>
-            <p style="font-size: 1.2em; margin: 20px 0; color: #666;">Cette plateforme avancée vous permet de créer des cours interactifs avec vidéos démonstratives, gérer vos élèves et offrir une expérience d'apprentissage immersive.</p>
-            
-            <div class="lesson-grid">
-                <div class="lesson-card" onclick="showTab('cours')">
-                    <h3>📹 Cours Vidéo Interactifs</h3>
-                    <p>Créez des cours riches avec vidéos démonstratives, exercices structurés et suivi pédagogique.</p>
-                    <div class="lesson-meta">
-                        <div class="lesson-duration">Créer</div>
-                        <div class="lesson-level">Nouveau</div>
+                <div id="tab-1-theory" class="tab-content active">
+                    <div class="theory-box">
+                        <h3>🎼 Histoire et Caractéristiques</h3>
+                        <p>Le piano gospel trouve ses racines dans la musique spirituelle afro-américaine. Caractéristiques principales :</p>
+                        <ul>
+                            <li>Utilisation intensive d'accords étendus (7e, 9e, 11e)</li>
+                            <li>Syncopes et rythmes complexes</li>
+                            <li>Main gauche rythmique puissante</li>
+                            <li>Ornementation mélodique riche</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="chord-diagram">
+                        <h4>Accords de base en Do majeur :</h4>
+                        <pre>
+I    - C maj7  : C - E - G - B
+ii   - D min7  : D - F - A - C
+iii  - E min7  : E - G - B - D
+IV   - F maj7  : F - A - C - E
+V    - G dom7  : G - B - D - F
+vi   - A min7  : A - C - E - G
+vii  - B ø7    : B - D - F - A
+                        </pre>
                     </div>
                 </div>
-                <div class="lesson-card" onclick="showTab('piano')" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                    <h3>🎹 Piano Interactif HD</h3>
-                    <p>Piano virtuel professionnel avec métronome avancé, enregistrement et playback.</p>
-                    <div class="lesson-meta">
-                        <div class="lesson-duration">Jouer</div>
-                        <div class="lesson-level">Pro</div>
+
+                <div id="tab-1-practical" class="tab-content">
+                    <div class="practical-exercise">
+                        <h3>🎹 Exercice 1: Position des mains</h3>
+                        <p>Main droite: Placement sur C-D-E-F-G (pouce sur Do)</p>
+                        <p>Main gauche: Accords en position fermée</p>
+                        
+                        <div class="keyboard">
+                            <div class="key" onclick="playNote('C')">C</div>
+                            <div class="key black" onclick="playNote('Db')">C#</div>
+                            <div class="key" onclick="playNote('D')">D</div>
+                            <div class="key black" onclick="playNote('Eb')">D#</div>
+                            <div class="key" onclick="playNote('E')">E</div>
+                            <div class="key" onclick="playNote('F')">F</div>
+                            <div class="key black" onclick="playNote('Gb')">F#</div>
+                            <div class="key" onclick="playNote('G')">G</div>
+                        </div>
                     </div>
                 </div>
-                <div class="lesson-card" onclick="showTab('progression')" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
-                    <h3>📊 Gestion Élèves</h3>
-                    <p>Suivi détaillé des progrès, évaluations personnalisées et communication directe.</p>
-                    <div class="lesson-meta">
-                        <div class="lesson-duration">Gérer</div>
-                        <div class="lesson-level">Avancé</div>
+
+                <div id="tab-1-examples" class="tab-content">
+                    <div class="progression">
+                        <h4>🎶 Progression Gospel Classique</h4>
+                        <p><strong>I - vi - IV - V7</strong></p>
+                        <p>En Do: C maj7 - A min7 - F maj7 - G7</p>
+                        <p>Cette progression est la base de nombreuses chansons gospel</p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Cours -->
-        <div class="tab-content" id="cours">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-                <h2>📚 Bibliothèque de Cours Vidéo</h2>
-                <button class="btn" onclick="openModal('lesson-modal')">➕ Nouveau Cours</button>
-            </div>
-            
-            <div class="lesson-grid" id="lessons-container">
-                <!-- Les cours seront ajoutés ici dynamiquement -->
-            </div>
-        </div>
+            <div class="module" id="module2">
+                <h2><span class="module-icon">🎯</span>Module 2: Accords et Voicings</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab(2, 'theory')">Théorie</button>
+                    <button class="tab" onclick="showTab(2, 'practical')">Pratique</button>
+                    <button class="tab" onclick="showTab(2, 'voicings')">Voicings</button>
+                </div>
 
-        <!-- Piano Virtuel -->
-        <div class="tab-content" id="piano">
-            <h2>🎹 Piano Virtuel Professionnel</h2>
-            
-            <div class="metronome">
-                <h3>🎵 Métronome Précision</h3>
-                <div class="bpm-display" id="bpm-display">120</div>
-                <div class="bpm-controls">
-                    <button class="bpm-btn" onclick="adjustBPM(-10)">-10</button>
-                    <button class="bpm-btn" onclick="adjustBPM(-5)">-5</button>
-                    <button class="bpm-btn" onclick="adjustBPM(-1)">-1</button>
-                    <button class="bpm-btn" id="metronome-btn" onclick="toggleMetronome()">▶️ Start</button>
-                    <button class="bpm-btn" onclick="adjustBPM(1)">+1</button>
-                    <button class="bpm-btn" onclick="adjustBPM(5)">+5</button>
-                    <button class="bpm-btn" onclick="adjustBPM(10)">+10</button>
+                <div id="tab-2-theory" class="tab-content active">
+                    <div class="theory-box">
+                        <h3>🎼 Accords Étendus</h3>
+                        <p>Le gospel utilise massivement les extensions d'accords :</p>
+                        <ul>
+                            <li><strong>Maj7</strong> : Sonorité douce et jazzy</li>
+                            <li><strong>Dom7</strong> : Tension qui appelle résolution</li>
+                            <li><strong>Min7</strong> : Couleur mélancolique</li>
+                            <li><strong>Add9</strong> : Ajout de couleur sans tension</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="chord-diagram">
+                        <h4>Extensions courantes :</h4>
+                        <pre>
+C maj9  : C - E - G - B - D
+G13     : G - B - D - F - A - C - E
+F maj7#11: F - A - C - E - B
+A min11 : A - C - E - G - B - D
+                        </pre>
+                    </div>
+                </div>
+
+                <div id="tab-2-practical" class="tab-content">
+                    <div class="practical-exercise">
+                        <h3>🎹 Exercice de Voicing</h3>
+                        <p>Travaillez ces voicings main gauche :</p>
+                        <div class="chord-diagram">
+                            <pre>
+Position 1 (rootless) :
+C maj7 : E - G - B - D
+F maj7 : A - C - E - G
+G7     : B - D - F - A
+
+Position 2 :
+C maj7 : G - B - D - E
+F maj7 : C - E - G - A
+G7     : D - F - A - B
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-2-voicings" class="tab-content">
+                    <div class="progression">
+                        <h4>🎵 Voicings Gospel Authentiques</h4>
+                        <p><strong>Technique du "Shell Voicing"</strong></p>
+                        <p>Main gauche: 3e + 7e de l'accord</p>
+                        <p>Main droite: Fondamentale + 5e + extensions</p>
+                        <div class="chord-diagram">
+                            <pre>
+Exemple sur C maj7 :
+MG: E + B
+MD: C + G + D (add9)
+                            </pre>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="piano-keys" id="piano-keys">
-                <!-- Les touches seront générées par JavaScript -->
-            </div>
-            
-            <div style="text-align: center; margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                <button class="btn" onclick="recordMode()">🔴 Enregistrement</button>
-                <button class="btn" onclick="playRecording()">▶️ Rejouer</button>
-                <button class="btn btn-secondary" onclick="clearRecording()">🗑️ Effacer</button>
-                <button class="btn" onclick="downloadRecording()">💾 Télécharger</button>
-            </div>
-        </div>
+            <div class="module" id="module3">
+                <h2><span class="module-icon">🥁</span>Module 3: Rythmes Gospel</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab(3, 'theory')">Théorie</button>
+                    <button class="tab" onclick="showTab(3, 'patterns')">Patterns</button>
+                    <button class="tab" onclick="showTab(3, 'practice')">Pratique</button>
+                </div>
 
-        <!-- Progression -->
-        <div class="tab-content" id="progression">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
-                <h2>📈 Gestion des Élèves</h2>
-                <button class="btn" onclick="openModal('student-modal')">➕ Nouvel Élève</button>
-            </div>
-            
-            <div class="student-list" id="students-container">
-                <!-- Les élèves seront ajoutés ici -->
-            </div>
-        </div>
+                <div id="tab-3-theory" class="tab-content active">
+                    <div class="theory-box">
+                        <h3>🎵 Rythmes Caractéristiques</h3>
+                        <p>Le gospel utilise des rythmes syncopés complexes :</p>
+                        <ul>
+                            <li><strong>Shuffle</strong> : Triolets avec accent sur temps faibles</li>
+                            <li><strong>Swing</strong> : Division ternaire du temps</li>
+                            <li><strong>Straight</strong> : Division binaire avec syncopes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="rhythm-pattern">
+                        <h4>Pattern de base (4/4) :</h4>
+                        <div class="beat active" onclick="toggleBeat(this)">1</div>
+                        <div class="beat" onclick="toggleBeat(this)">e</div>
+                        <div class="beat active" onclick="toggleBeat(this)">+</div>
+                        <div class="beat" onclick="toggleBeat(this)">a</div>
+                        <div class="beat active" onclick="toggleBeat(this)">2</div>
+                        <div class="beat" onclick="toggleBeat(this)">e</div>
+                        <div class="beat active" onclick="toggleBeat(this)">+</div>
+                        <div class="beat" onclick="toggleBeat(this)">a</div>
+                    </div>
+                </div>
 
-        <!-- Administration -->
-        <div class="tab-content" id="admin">
-            <h2>⚙️ Panneau d'Administration</h2>
-            <div class="admin-form">
-                <div class="form-group">
-                    <label>🏫 Nom de l'école:</label>
-                    <input type="text" id="school-name" placeholder="École de Piano Virtuose">
+                <div id="tab-3-patterns" class="tab-content">
+                    <div class="practical-exercise">
+                        <h3>🥁 Patterns Rythmiques Gospel</h3>
+                        
+                        <h4>Pattern 1 - Traditional Gospel</h4>
+                        <div class="rhythm-pattern">
+                            <div class="beat active">1</div>
+                            <div class="beat">e</div>
+                            <div class="beat active">+</div>
+                            <div class="beat">a</div>
+                            <div class="beat">2</div>
+                            <div class="beat">e</div>
+                            <div class="beat active">+</div>
+                            <div class="beat active">a</div>
+                        </div>
+                        
+                        <h4>Pattern 2 - Contemporary Gospel</h4>
+                        <div class="rhythm-pattern">
+                            <div class="beat active">1</div>
+                            <div class="beat active">e</div>
+                            <div class="beat">+</div>
+                            <div class="beat active">a</div>
+                            <div class="beat active">2</div>
+                            <div class="beat">e</div>
+                            <div class="beat active">+</div>
+                            <div class="beat">a</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>📝 Description:</label>
-                    <textarea id="school-description" rows="4" placeholder="Description professionnelle de votre école de piano..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>✉️ Email de contact:</label>
-                    <input type="email" id="contact-email" placeholder="contact@ecole-piano.com">
-                </div>
-                <div class="form-group">
-                    <label>🌐 Site web:</label>
-                    <input type="url" id="website" placeholder="https://www.votre-ecole.com">
-                </div>
-                <div class="form-group">
-                    <label>📱 Téléphone:</label>
-                    <input type="tel" id="phone" placeholder="+33 1 23 45 67 89">
-                </div>
-                <button class="btn" onclick="saveSettings()">💾 Sauvegarder Paramètres</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal pour nouveau cours -->
-    <div class="modal" id="lesson-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('lesson-modal')">&times;</span>
-            <h3>📖 Créer un Cours Vidéo Professionnel</h3>
-            <div class="admin-form">
-                <div class="form-group">
-                    <label>🎯 Titre du cours:</label>
-                    <input type="text" id="lesson-title" placeholder="Ex: Maîtriser les gammes majeures">
+                <div id="tab-3-practice" class="tab-content">
+                    <div class="progression">
+                        <h4>🎹 Exercice Main Gauche</h4>
+                        <p>Travaillez ces patterns avec la main gauche seule :</p>
+                        <div class="chord-diagram">
+                            <pre>
+Mesure 1: C (temps 1) - - (temps 2.5) C (temps 3) - C (temps 4.5)
+Mesure 2: F (temps 1) - F (temps 2) - - (temps 3.5) F (temps 4)
+Mesure 3: G (temps 1) - - (temps 2.5) G (temps 3) G (temps 3.5) -
+Mesure 4: C (temps 1) - C (temps 2) - C (temps 3) - C (temps 4.5)
+                            </pre>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>📊 Niveau:</label>
-                    <select id="lesson-level">
-                        <option value="debutant">🟢 Débutant</option>
-                        <option value="intermediaire">🟡 Intermédiaire</option>
-                        <option value="avance">🔴 Avancé</option>
-                        <option value="expert">⚫ Expert</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>⏱️ Durée (minutes):</label>
-                    <input type="number" id="lesson-duration" placeholder="45" min="5" max="180">
-                </div>
-                <div class="form-group">
-                    <label>📝 Description courte:</label>
-                    <textarea id="lesson-description" rows="3" placeholder="Description attractive du cours pour vos élèves..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>🎥 Vidéo démonstrative:</label>
-                    <input type="file" id="lesson-video" class="file-input" accept="video/*" onchange="handleVideoUpload(event)">
-                    <label for="lesson-video" class="file-label">📹 Choisir une vidéo</label>
-                    <div id="video-preview"></div>
-                </div>
-                <div class="form-group">
-                    <label>🎯 Objectifs d'apprentissage:</label>
-                    <textarea id="lesson-objectives" rows="4" placeholder="• Objectif 1&#10;• Objectif 2&#10;• Objectif 3"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>📚 Contenu théorique:</label>
-                    <textarea id="lesson-theory" rows="5" placeholder="Expliquez la théorie musicale de cette leçon..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>🎹 Exercices pratiques:</label>
-                    <textarea id="lesson-practice" rows="5" placeholder="Décrivez les exercices pratiques étape par étape..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label>🏠 Devoirs à la maison:</label>
-                    <textarea id="lesson-homework" rows="4" placeholder="Travail personnel pour la semaine..."></textarea>
-                </div>
-                <button class="btn" onclick="addLesson()">➕ Créer le Cours Vidéo</button>
             </div>
-        </div>
-    </div>
 
-    <!-- Modal pour nouvel élève -->
-    <div class="modal" id="student-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('student-modal')">&times;</span>
-            <h3>👤 Ajouter un Nouvel Élève</h3>
-            <div class="admin-form">
-                <div class="form-group">
-                    <label>👤 Nom complet:</label>
-                    <input type="text" id="student-name" placeholder="Ex: Marie Dupont">
+            <div class="module" id="module4">
+                <h2><span class="module-icon">🎨</span>Module 4: Techniques d'Ornementation</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab(4, 'theory')">Théorie</button>
+                    <button class="tab" onclick="showTab(4, 'runs')">Runs</button>
+                    <button class="tab" onclick="showTab(4, 'fills')">Fills</button>
                 </div>
-                <div class="form-group">
-                    <label>🎂 Âge:</label>
-                    <input type="number" id="student-age" placeholder="25" min="3" max="120">
+
+                <div id="tab-4-theory" class="tab-content active">
+                    <div class="theory-box">
+                        <h3>🎵 Ornementations Gospel</h3>
+                        <p>Les techniques d'ornementation donnent vie au gospel :</p>
+                        <ul>
+                            <li><strong>Runs</strong> : Passages rapides et fluides</li>
+                            <li><strong>Fills</strong> : Remplissages entre phrases</li>
+                            <li><strong>Trills</strong> : Alternance rapide de notes</li>
+                            <li><strong>Grace notes</strong> : Notes d'ornement brèves</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>📊 Niveau actuel:</label>
-                    <select id="student-level">
-                        <option value="debutant">🟢 Débutant</option>
-                        <option value="intermediaire">🟡 Intermédiaire</option>
-                        <option value="avance">🔴 Avancé</option>
-                        <option value="expert">⚫ Expert</option>
-                    </select>
+
+                <div id="tab-4-runs" class="tab-content">
+                    <div class="practical-exercise">
+                        <h3>🏃 Gospel Runs Essentiels</h3>
+                        
+                        <h4>Run 1 - Gamme pentatonique</h4>
+                        <div class="chord-diagram">
+                            <pre>
+Main Droite (Do majeur) :
+C - D - E - G - A - C - A - G - E - D - C
+(1 - 2 - 3 - 5 - 6 - 8 - 6 - 5 - 3 - 2 - 1)
+                            </pre>
+                        </div>
+                        
+                        <h4>Run 2 - Chromatique descendant</h4>
+                        <div class="chord-diagram">
+                            <pre>
+Main Droite :
+C - B - Bb - A - Ab - G - Gb - F - E - Eb - D - C
+                            </pre>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>✉️ Email:</label>
-                    <input type="email" id="student-email" placeholder="marie.dupont@email.com">
+
+                <div id="tab-4-fills" class="tab-content">
+                    <div class="progression">
+                        <h4>🎶 Fills Gospel Classiques</h4>
+                        
+                        <h4>Fill de fin de phrase</h4>
+                        <div class="chord-diagram">
+                            <pre>
+Temps 3.5-4 d'une mesure :
+MD: G - A - B - C (rapide)
+MG: C maj7 (tenu)
+                            </pre>
+                        </div>
+                        
+                        <h4>Fill de transition</h4>
+                        <div class="chord-diagram">
+                            <pre>
+Entre deux accords :
+C vers F : MD: E - F - G - A
+          MG: C - F
+                            </pre>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>📱 Téléphone:</label>
-                    <input type="tel" id="student-phone" placeholder="+33 6 12 34 56 78">
+            </div>
+
+            <div class="module" id="module5">
+                <h2><span class="module-icon">🎹</span>Module 5: Styles Gospel Avancés</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab(5, 'traditional')">Traditional</button>
+                    <button class="tab" onclick="showTab(5, 'contemporary')">Contemporary</button>
+                    <button class="tab" onclick="showTab(5, 'urban')">Urban Gospel</button>
                 </div>
-                <div class="form-group">
-                    <label>🎯 Objectifs personnels:</label>
-                    <textarea id="student-goals" rows="3" placeholder="Objectifs et motivations de l'élève..."></textarea>
+
+                <div id="tab-5-traditional" class="tab-content active">
+                    <div class="theory-box">
+                        <h3>🏛️ Gospel Traditionnel</h3>
+                        <p>Caractéristiques du style traditionnel :</p>
+                        <ul>
+                            <li>Tempo modéré (80-120 BPM)</li>
+                            <li>Accords simples avec extensions</li>
+                            <li>Main gauche "stride"</li>
+                            <li>Mélodie lyrique et expressive</li>
+                        </ul>
+                        
+                        <div class="progression">
+                            <h4>Progression Typique</h4>
+                            <p>I - IV - I - V7 - I</p>
+                            <p>C - F - C - G7 - C</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>📝 Notes particulières:</label>
-                    <textarea id="student-notes" rows="2" placeholder="Informations importantes, difficultés, préférences..."></textarea>
+
+                <div id="tab-5-contemporary" class="tab-content">
+                    <div class="practical-exercise">
+                        <h3>🆕 Gospel Contemporain</h3>
+                        <p>Style plus moderne avec influences jazz et R&B :</p>
+                        <ul>
+                            <li>Harmonie complexe (extensions, substitutions)</li>
+                            <li>Rythmes plus variés</li>
+                            <li>Utilisation de modes</li>
+                            <li>Techniques de réharmonisation</li>
+                        </ul>
+                        
+                        <div class="chord-diagram">
+                            <h4>Réharmonisation I-vi-IV-V</h4>
+                            <pre>
+Basique : C - Am - F - G
+Avancé  : C maj9 - Am11 - F maj7#11 - G13sus4-G13
+                            </pre>
+                        </div>
+                    </div>
                 </div>
-                <button class="btn" onclick="addStudent()">➕ Ajouter l'Élève</button>
+
+                <div id="tab-5-urban" class="tab-content">
+                    <div class="progression">
+                        <h4>🏙️ Urban Gospel</h4>
+                        <p>Fusion gospel-hip hop-R&B :</p>
+                        <ul>
+                            <li>Rythmes trap et hip-hop</li>
+                            <li>Basses lourdes et percussives</li>
+                            <li>Utilisation de samples</li>
+                            <li>Harmonie moderne et audacieuse</li>
+                        </ul>
+                        
+                        <div class="rhythm-pattern">
+                            <h4>Pattern Urban Gospel</h4>
+                            <div class="beat active">1</div>
+                            <div class="beat">e</div>
+                            <div class="beat">+</div>
+                            <div class="beat active">a</div>
+                            <div class="beat">2</div>
+                            <div class="beat active">e</div>
+                            <div class="beat">+</div>
+                            <div class="beat">a</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module" id="module6">
+                <h2><span class="module-icon">🎼</span>Module 6: Improvisation et Performance</h2>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab(6, 'improv')">Improvisation</button>
+                    <button class="tab" onclick="showTab(6, 'performance')">Performance</button>
+                    <button class="tab" onclick="showTab(6, 'tips')">Conseils Pro</button>
+                </div>
+
+                <div id="tab-6-improv" class="tab-content active">
+                    <div class="theory-box">
+                        <h3>🎭 Techniques d'Improvisation</h3>
+                        <p>L'improvisation gospel repose sur :</p>
+                        <ul>
+                            <li><strong>Connaissance des gammes</strong> : Pentatonique, blues, modes</li>
+                            <li><strong>Phrases mélodiques</strong> : Licks et patterns préparés</li>
+                            <li><strong>Écoute active</strong> : Réagir aux autres musiciens</li>
+                            <li><strong>Expression émotionnelle</strong> : Transmettre le message</li>
+                        </ul>
+                        
+                        <div class="chord-diagram">
+                            <h4>Gammes pour improvisation en Do</h4>
+                            <pre>
+Pentatonique majeure : C - D - E - G - A
+Pentatonique mineure : C - Eb - F - G - Bb
+Blues                : C - Eb - F - Gb - G - Bb
+Dorien              : C - D - Eb - F - G - A - Bb
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-6-performance" class="tab-content">
+                    <div class="practical-exercise">
+                        <h3>🎤 Conseils de Performance</h3>
+                        <ul>
+                            <li><strong>Communication</strong> : Établir le contact avec l'audience</li>
+                            <li><strong>Dynamiques</strong> : Varier l'intensité selon le message</li>
+                            <li><strong>Espace</strong> : Laisser respirer la musique</li>
+                            <li><strong>Spontanéité</strong> : Être prêt à s'adapter</li>
+                        </ul>
+                        
+                        <div class="progression">
+                            <h4>Structure de Performance Gospel</h4>
+                            <p>1. Introduction calme</p>
+                            <p>2. Premier couplet (simple)</p>
+                            <p>3. Refrain (plus intense)</p>
+                            <p>4. Deuxième couplet (orné)</p>
+                            <p>5. Refrain final (climax)</p>
+                            <p>6. Outro (retour au calme)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tab-6-tips" class="tab-content">
+                    <div class="progression">
+                        <h4>💡 Conseils de Professionnels</h4>
+                        
+                        <h5>Technique :</h5>
+                        <ul>
+                            <li>Travaillez vos gammes quotidiennement</li>
+                            <li>Développez l'indépendance des mains</li>
+                            <li>Maîtrisez le toucher et l'articulation</li>
+                        </ul>
+                        
+                        <h5>Musical :</h5>
+                        <ul>
+                            <li>Écoutez les grands maîtres (Thomas Dorsey, James Cleveland)</li>
+                            <li>Transcrivez vos passages favoris</li>
+                            <li>Jouez avec d'autres musiciens</li>
+                        </ul>
+                        
+                        <h5>Spirituel :</h5>
+                        <ul>
+                            <li>Comprenez le message des textes</li>
+                            <li>Laissez la spiritualité guider votre jeu</li>
+                            <li>Servez la musique, ne vous servez pas d'elle</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Variables globales
-        let lessons = [];
-        let students = [];
-        let currentBPM = 120;
-        let metronomeInterval = null;
-        let isRecording = false;
-        let recording = [];
-        let audioContext = null;
-        let videoFiles = {};
-
-        // Navigation entre onglets
-        function showTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            document.getElementById(tabName).classList.add('active');
-            event.target.classList.add('active');
-        }
-
-        // Gestion des modales
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Gestion de l'upload vidéo
-        function handleVideoUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const videoURL = URL.createObjectURL(file);
-                const videoPreview = document.getElementById('video-preview');
-                videoPreview.innerHTML = `
-                    <div style="margin-top: 15px;">
-                        <video controls style="width: 100%; max-width: 400px; border-radius: 10px;">
-                            <source src="${videoURL}" type="${file.type}">
-                            Votre navigateur ne supporte pas la lecture vidéo.
-                        </video>
-                        <p style="margin-top: 10px; color: #666; font-size: 0.9em;">
-                            📁 ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)
-                        </p>
-                    </div>
-                `;
-                videoFiles[Date.now()] = { file, url: videoURL };
-            }
-        }
-
-        // Génération du piano virtuel
-        function createPiano() {
-            const pianoKeys = document.getElementById('piano-keys');
-            const notes = [
-                {note: 'C', type: 'white'},
-                {note: 'C#', type: 'black'},
-                {note: 'D', type: 'white'},
-                {note: 'D#', type: 'black'},
-                {note: 'E', type: 'white'},
-                {note: 'F', type: 'white'},
-                {note: 'F#', type: 'black'},
-                {note: 'G', type: 'white'},
-                {note: 'G#', type: 'black'},
-                {note: 'A', type: 'white'},
-                {note: 'A#', type: 'black'},
-                {note: 'B', type: 'white'}
-            ];
-            
-            for (let octave = 3; octave <= 6; octave++) {
-                notes.forEach(noteObj => {
-                    const key = document.createElement('div');
-                    key.className = `key ${noteObj.type}`;
-                    key.dataset.note = noteObj.note + octave;
-                    key.onclick = () => playNote(noteObj.note + octave, key);
-                    
-                    // Ajout du nom de la note sur les touches blanches
-                    if (noteObj.type === 'white') {
-                        key.innerHTML = `<span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 0.8em; color: #666; font-weight: bold;">${noteObj.note}${octave}</span>`;
-                    }
-                    
-                    pianoKeys.appendChild(key);
-                });
-            }
-        }
-
-        // Jouer une note avec meilleur son
-        function playNote(note, keyElement) {
-            if (audioContext === null) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
-            const frequencies = {
-                'C3': 130.81, 'C#3': 138.59, 'D3': 146.83, 'D#3': 155.56, 'E3': 164.81, 'F3': 174.61,
-                'F#3': 185.00, 'G3': 196.00, 'G#3': 207.65, 'A3': 220.00, 'A#3': 233.08, 'B3': 246.94,
-                'C4': 261.63, 'C#4': 277.18, 'D4': 293.66, 'D#4': 311.13, 'E4': 329.63, 'F4': 349.23,
-                'F#4': 369.99, 'G4': 392.00, 'G#4': 415.30, 'A4': 440.00, 'A#4': 466.16, 'B4': 493.88,
-                'C5': 523.25, 'C#5': 554.37, 'D5': 587.33, 'D#5': 622.25, 'E5': 659.25, 'F5': 698.46,
-                'F#5': 739.99, 'G5': 783.99, 'G#5': 830.61, 'A5': 880.00, 'A#5': 932.33, 'B5': 987.77,
-                'C6': 1046.50, 'C#6': 1108.73, 'D6': 1174.66, 'D#6': 1244.51, 'E6': 1318.51, 'F6': 1396.91,
-                'F#6': 1479.98, 'G6': 1567.98, 'G#6': 1661.22, 'A6': 1760.00, 'A#6': 1864.66, 'B6': 1975.53
-            };
-
-            const frequency = frequencies[note];
-            if (frequency) {
-                // Son de piano plus réaliste
-                const oscillator1 = audioContext.createOscillator();
-                const oscillator2 = audioContext.createOscillator();
-                const gainNode = audioContext.createGain();
-                
-                oscillator1.connect(gainNode);
-                oscillator2.connect(gainNode);
-                gainNode.connect(audioContext.destination);
-                
-                oscillator1.frequency.setValueAtTime(frequency, audioContext.currentTime);
-                oscillator2.frequency.setValueAtTime(frequency * 2, audioContext.currentTime);
-                
-                oscillator1.type = 'sine';
-                oscillator2.type = 'triangle';
-                
-                gainNode.gain.setValueAtTime(0.4, audioContext.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.5);
-                
-                oscillator1.start(audioContext.currentTime);
-                oscillator2.start(audioContext.currentTime);
-                oscillator1.stop(audioContext.currentTime + 1.5);
-                oscillator2.stop(audioContext.currentTime + 1.5);
-
-                keyElement.classList.add('active');
-                setTimeout(() => keyElement.classList.remove('active'), 250);
-
-                if (isRecording) {
-                    recording.push({ note, time: Date.now() });
-                }
-            }
-        }
-
-        // Gestion du métronome améliorée
-        function adjustBPM(change) {
-            currentBPM = Math.max(30, Math.min(200, currentBPM + change));
-            document.getElementById('bpm-display').textContent = currentBPM;
-            
-            if (metronomeInterval) {
-                clearInterval(metronomeInterval);
-                startMetronome();
-            }
-        }
-
-        function toggleMetronome() {
-            const btn = document.getElementById('metronome-btn');
-            
-            if (metronomeInterval) {
-                clearInterval(metronomeInterval);
-                metronomeInterval = null;
-                btn.textContent = '▶️ Start';
-                btn.style.background = '#d35400';
-            } else {
-                startMetronome();
-                btn.textContent = '⏸️ Stop';
-                btn.style.background = '#e74c3c';
-            }
-        }
-
-        function startMetronome() {
-            const interval = (60 / currentBPM) * 1000;
-            let beat = 0;
-            
-            metronomeInterval = setInterval(() => {
-                if (audioContext) {
-                    const oscillator = audioContext.createOscillator();
-                    const gainNode = audioContext.createGain();
-                    
-                    oscillator.connect(gainNode);
-                    gainNode.connect(audioContext.destination);
-                    
-                    // Premier temps plus fort
-                    oscillator.frequency.setValueAtTime(beat % 4 === 0 ? 1000 : 800, audioContext.currentTime);
-                    oscillator.type = 'sine';
-                    
-                    gainNode.gain.setValueAtTime(beat % 4 === 0 ? 0.2 : 0.1, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-                    
-                    oscillator.start(audioContext.currentTime);
-                    oscillator.stop(audioContext.currentTime + 0.1);
-                }
-                beat++;
-            }, interval);
-        }
-
-        // Gestion de l'enregistrement améliorée
-        function recordMode() {
-            isRecording = !isRecording;
-            const btn = event.target;
-            
-            if (isRecording) {
-                recording = [];
-                btn.textContent = '⏹️ Arrêter';
-                btn.style.background = 'linear-gradient(45deg, #e74c3c, #c0392b)';
-                btn.style.animation = 'pulse 1.5s infinite';
-            } else {
-                btn.textContent = '🔴 Enregistrement';
-                btn.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
-                btn.style.animation = 'none';
-            }
-        }
-
-        function playRecording() {
-            if (recording.length === 0) {
-                alert('Aucun enregistrement disponible');
-                return;
-            }
-            
-            const startTime = recording[0].time;
-            recording.forEach((entry, index) => {
-                const delay = entry.time - startTime;
-                setTimeout(() => {
-                    const keyElement = document.querySelector(`[data-note="${entry.note}"]`);
-                    if (keyElement) {
-                        playNote(entry.note, keyElement);
-                    }
-                }, delay / 3); // Lecture légèrement accélérée
-            });
-        }
-
-        function clearRecording() {
-            if (recording.length === 0) {
-                alert('Aucun enregistrement à effacer');
-                return;
-            }
-            
-            if (confirm('Êtes-vous sûr de vouloir effacer cet enregistrement ?')) {
-                recording = [];
-                alert('Enregistrement effacé avec succès');
-            }
-        }
-
-        function downloadRecording() {
-            if (recording.length === 0) {
-                alert('Aucun enregistrement à télécharger');
-                return;
-            }
-            
-            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(recording));
-            const downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", `enregistrement-piano-${new Date().toISOString().slice(0,10)}.json`);
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
-            
-            alert('Enregistrement téléchargé avec succès !');
-        }
-
-        // Gestion des cours avec vidéos
-        function addLesson() {
-            const title = document.getElementById('lesson-title').value;
-            const level = document.getElementById('lesson-level').value;
-            const duration = document.getElementById('lesson-duration').value;
-            const description = document.getElementById('lesson-description').value;
-            const objectives = document.getElementById('lesson-objectives').value;
-            const theory = document.getElementById('lesson-theory').value;
-            const practice = document.getElementById('lesson-practice').value;
-            const homework = document.getElementById('lesson-homework').value;
-            const videoFile = document.getElementById('lesson-video').files[0];
-            
-            if (!title || !duration || !description) {
-                alert('Veuillez remplir au moins le titre, la durée et la description');
-                return;
-            }
-
-            const lesson = {
-                id: Date.now(),
-                title,
-                level,
-                duration: parseInt(duration),
-                description,
-                objectives,
-                theory,
-                practice,
-                homework,
-                videoURL: videoFile ? URL.createObjectURL(videoFile) : null,
-                videoName: videoFile ? videoFile.name : null,
-                createdAt: new Date().toLocaleDateString('fr-FR'),
-                completions: Math.floor(Math.random() * 50)
-            };
-
-            lessons.push(lesson);
-            displayLessons();
-            closeModal('lesson-modal');
-            
-            // Réinitialiser le formulaire
-            document.getElementById('lesson-title').value = '';
-            document.getElementById('lesson-duration').value = '';
-            document.getElementById('lesson-description').value = '';
-            document.getElementById('lesson-objectives').value = '';
-            document.getElementById('lesson-theory').value = '';
-            document.getElementById('lesson-practice').value = '';
-            document.getElementById('lesson-homework').value = '';
-            document.getElementById('lesson-video').value = '';
-            document.getElementById('video-preview').innerHTML = '';
-            
-            alert('✅ Cours créé avec succès !');
-        }
-
-        function displayLessons() {
-            const container = document.getElementById('lessons-container');
-            container.innerHTML = '';
-
-            lessons.forEach(lesson => {
-                const levelColors = {
-                    'debutant': 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-                    'intermediaire': 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-                    'avance': 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
-                    'expert': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-                };
-
-                const levelEmojis = {
-                    'debutant': '🟢',
-                    'intermediaire': '🟡',
-                    'avance': '🔴',
-                    'expert': '⚫'
-                };
-
-                const lessonCard = document.createElement('div');
-                lessonCard.className = 'lesson-card';
-                lessonCard.style.background = levelColors[lesson.level];
-                lessonCard.onclick = () => viewLesson(lesson);
-                
-                lessonCard.innerHTML = `
-                    <h3>${lesson.title}</h3>
-                    <p>${lesson.description}</p>
-                    ${lesson.videoURL ? '<div style="margin: 15px 0; color: rgba(255,255,255,0.9); font-weight: 600;">🎥 Vidéo incluse</div>' : ''}
-                    <div class="lesson-meta">
-                        <div class="lesson-duration">${lesson.duration} min</div>
-                        <div class="lesson-level">${levelEmojis[lesson.level]} ${lesson.level}</div>
-                    </div>
-                    <small style="opacity: 0.8; display: block; margin-top: 10px;">
-                        📅 ${lesson.createdAt} • 👥 ${lesson.completions} complétions
-                    </small>
-                `;
-                
-                container.appendChild(lessonCard);
-            });
-
-            if (lessons.length === 0) {
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 60px; color: #666; font-style: italic; grid-column: 1/-1;">
-                        <div style="font-size: 4em; margin-bottom: 20px;">📹</div>
-                        <h3>Aucun cours créé</h3>
-                        <p>Cliquez sur "Nouveau Cours" pour créer votre premier cours vidéo</p>
-                    </div>
-                `;
-            }
-        }
-
-        function viewLesson(lesson) {
-            const levelEmojis = {
-                'debutant': '🟢',
-                'intermediaire': '🟡',
-                'avance': '🔴',
-                'expert': '⚫'
-            };
-
-            const modal = document.createElement('div');
-            modal.className = 'modal active';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <span class="close-modal" onclick="this.closest('.modal').remove()">&times;</span>
-                    <h2>${lesson.title}</h2>
-                    <div style="margin: 20px 0; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-                        <span style="background: #667eea; color: white; padding: 8px 20px; border-radius: 25px; font-size: 0.9em; font-weight: 600;">
-                            ${levelEmojis[lesson.level]} ${lesson.level}
-                        </span>
-                        <span style="background: #e74c3c; color: white; padding: 8px 20px; border-radius: 25px; font-size: 0.9em; font-weight: 600;">
-                            ⏱️ ${lesson.duration} minutes
-                        </span>
-                        <span style="background: #27ae60; color: white; padding: 8px 20px; border-radius: 25px; font-size: 0.9em; font-weight: 600;">
-                            👥 ${lesson.completions} élèves
-                        </span>
-                    </div>
-                    
-                    ${lesson.videoURL ? `
-                        <div class="video-section">
-                            <h3>🎥 Vidéo Démonstrative</h3>
-                            <video controls style="width: 100%; max-height: 400px; border-radius: 15px; margin: 15px 0;">
-                                <source src="${lesson.videoURL}" type="video/mp4">
-                                Votre navigateur ne supporte pas la lecture vidéo.
-                            </video>
-                            <p style="color: #666; font-size: 0.9em; text-align: center;">📁 ${lesson.videoName}</p>
-                        </div>
-                    ` : ''}
-                    
-                    <div style="margin: 25px 0;">
-                        <h3>📝 Description</h3>
-                        <p style="background: #f8f9fa; padding: 20px; border-radius: 15px; margin: 15px 0; line-height: 1.6;">${lesson.description}</p>
-                    </div>
-
-                    ${lesson.objectives ? `
-                        <div class="lesson-objectives">
-                            <h3>🎯 Objectifs d'apprentissage</h3>
-                            <div style="white-space: pre-line; margin-top: 15px; line-height: 1.8;">${lesson.objectives}</div>
-                        </div>
-                    ` : ''}
-
-                    ${lesson.theory ? `
-                        <div class="lesson-theory">
-                            <h3>📚 Contenu théorique</h3>
-                            <div style="white-space: pre-line; margin-top: 15px; line-height: 1.8;">${lesson.theory}</div>
-                        </div>
-                    ` : ''}
-
-                    ${lesson.practice ? `
-                        <div class="lesson-practice">
-                            <h3>🎹 Exercices pratiques</h3>
-                            <div style="white-space: pre-line; margin-top: 15px; line-height: 1.8;">${lesson.practice}</div>
-                        </div>
-                    ` : ''}
-
-                    ${lesson.homework ? `
-                        <div class="lesson-homework">
-                            <h3>🏠 Devoirs à la maison</h3>
-                            <div style="white-space: pre-line; margin-top: 15px; line-height: 1.8;">${lesson.homework}</div>
-                        </div>
-                    ` : ''}
-
-                    <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
-                        <button class="btn" onclick="editLesson(${lesson.id})">✏️ Modifier</button>
-                        <button class="btn btn-secondary" onclick="deleteLesson(${lesson.id})">🗑️ Supprimer</button>
-                        <button class="btn" onclick="duplicateLesson(${lesson.id})">📋 Dupliquer</button>
-                    </div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        function editLesson(lessonId) {
-            const lesson = lessons.find(l => l.id === lessonId);
-            if (!lesson) return;
-
-            document.getElementById('lesson-title').value = lesson.title;
-            document.getElementById('lesson-level').value = lesson.level;
-            document.getElementById('lesson-duration').value = lesson.duration;
-            document.getElementById('lesson-description').value = lesson.description;
-            document.getElementById('lesson-objectives').value = lesson.objectives || '';
-            document.getElementById('lesson-theory').value = lesson.theory || '';
-            document.getElementById('lesson-practice').value = lesson.practice || '';
-            document.getElementById('lesson-homework').value = lesson.homework || '';
-
-            // Supprimer l'ancien cours
-            lessons = lessons.filter(l => l.id !== lessonId);
-            
-            // Fermer les modales
-            document.querySelectorAll('.modal').forEach(modal => modal.remove());
-            
-            // Ouvrir la modal d'édition
-            openModal('lesson-modal');
-        }
-
-        function deleteLesson(lessonId) {
-            if (confirm('⚠️ Êtes-vous sûr de vouloir supprimer ce cours ?\nCette action est irréversible.')) {
-                lessons = lessons.filter(l => l.id !== lessonId);
-                displayLessons();
-                document.querySelectorAll('.modal').forEach(modal => modal.remove());
-                alert('✅ Cours supprimé avec succès !');
-            }
-        }
-
-        function duplicateLesson(lessonId) {
-            const lesson = lessons.find(l => l.id === lessonId);
-            if (!lesson) return;
-
-            const newLesson = {
-                ...lesson,
-                id: Date.now(),
-                title: lesson.title + ' (Copie)',
-                createdAt: new Date().toLocaleDateString('fr-FR'),
-                completions: 0
-            };
-
-            lessons.push(newLesson);
-            displayLessons();
-            document.querySelectorAll('.modal').forEach(modal => modal.remove());
-            alert('✅ Cours dupliqué avec succès !');
-        }
-
-        // Gestion des étudiants améliorée
-        function addStudent() {
-            const name = document.getElementById('student-name').value;
-            const age = document.getElementById('student-age').value;
-            const level = document.getElementById('student-level').value;
-            const email = document.getElementById('student-email').value;
-            const phone = document.getElementById('student-phone').value;
-            const goals = document.getElementById('student-goals').value;
-            const notes = document.getElementById('student-notes').value;
-            
-            if (!name || !age || !email) {
-                alert('Veuillez remplir au moins le nom, l\'âge et l\'email');
-                return;
-            }
-
-            const student = {
-                id: Date.now(),
-                name,
-                age: parseInt(age),
-                level,
-                email,
-                phone: phone || 'Non renseigné',
-                goals,
-                notes,
-                progress: Math.floor(Math.random() * 100),
-                joinDate: new Date().toLocaleDateString('fr-FR'),
-                lessonsCompleted: Math.floor(Math.random() * 25),
-                lastLesson: 'Il y a ' + Math.floor(Math.random() * 7 + 1) + ' jours',
-                nextLesson: new Date(Date.now() + Math.floor(Math.random() * 7 + 1) * 24 * 60 * 60 * 1000).toLocaleDateString('fr-FR')
-            };
-
-            students.push(student);
-            displayStudents();
-            closeModal('student-modal');
-            
-            // Réinitialiser le formulaire
-            document.getElementById('student-name').value = '';
-            document.getElementById('student-age').value = '';
-            document.getElementById('student-email').value = '';
-            document.getElementById('student-phone').value = '';
-            document.getElementById('student-goals').value = '';
-            document.getElementById('student-notes').value = '';
-            
-            alert('✅ Élève ajouté avec succès !');
-        }
-
-        function displayStudents() {
-            const container = document.getElementById('students-container');
-            container.innerHTML = '';
-
-            students.forEach(student => {
-                const levelEmojis = {
-                    'debutant': '🟢',
-                    'intermediaire': '🟡',
-                    'avance': '🔴',
-                    'expert': '⚫'
-                };
-
-                const studentCard = document.createElement('div');
-                studentCard.className = 'student-card';
-                studentCard.onclick = () => viewStudent(student);
-                
-                studentCard.innerHTML = `
-                    <div>
-                        <h3>${student.name}</h3>
-                        <p>${student.age} ans • ${levelEmojis[student.level]} ${student.level}</p>
-                        <small style="color: #666;">
-                            📧 ${student.email} • 📱 ${student.phone}<br>
-                            📚 ${student.lessonsCompleted} cours • Dernière leçon: ${student.lastLesson}
-                        </small>
-                    </div>
-                    <div style="text-align: right;">
-                        <div class="progress-section">
-                            <strong style="color: #667eea;">${student.progress}%</strong>
-                            <div class="progress-bar" style="width: 150px;">
-                                <div class="progress-fill" style="width: ${student.progress}%"></div>
-                            </div>
-                            <small>Progression globale</small>
-                        </div>
-                    </div>
-                `;
-                
-                container.appendChild(studentCard);
-            });
-
-            if (students.length === 0) {
-                container.innerHTML = `
-                    <div style="text-align: center; padding: 60px; color: #666; font-style: italic;">
-                        <div style="font-size: 4em; margin-bottom: 20px;">👥</div>
-                        <h3>Aucun élève enregistré</h3>
-                        <p>Cliquez sur "Nouvel Élève" pour ajouter votre premier étudiant</p>
-                    </div>
-                `;
-            }
-        }
-
-        function viewStudent(student) {
-            const levelEmojis = {
+        function showTab(moduleId, tabName) {
+            // Masquer tous les contenus des onglets du module
+            const contents = document.querySelectorAll(`#tab-${moduleId}-theory, #tab-${moduleId}-practical, #
